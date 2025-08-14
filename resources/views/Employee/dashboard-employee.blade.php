@@ -404,7 +404,7 @@
                             <p class="mb-0 mt-1">📦 New ID cards available at reception.</p>
                         </div>
                     </div>
-                    <a href="/announcement.html"><button class="btn-custom  text-white mt-3" style="width: fit-content;">📬 View All</button></a>
+                    <a href="{{route('announcement')}}"><button class="btn-custom  text-white mt-3" style="width: fit-content;">📬 View All</button></a>
                 </div>
                 <!-- Document Status -->
                 <div class="col-md-6">

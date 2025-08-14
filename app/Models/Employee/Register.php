@@ -1,0 +1,79 @@
+<?php
+
+namespace App\Models\Employee;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable; 
+
+use Illuminate\Notifications\Notifiable;
+
+class Register extends Model
+{
+  
+
+ protected $table = 'employee_register';
+ protected $guard_name = 'employee';
+ protected $fillable = [
+        'employer_id',
+        'employee_id',
+        'first_name',
+        'last_name',
+        'email',
+        'company_email',
+        'password',
+        'phone_number',
+        'Emergency_num',
+        'profile',
+        'address',
+        'city',
+        'post_code',
+        'signature_uload',
+        'driving_license',
+        'passport',
+        'offerletter',
+        'department',
+        'gender',
+        'employment_type',
+        'basic_salary',
+        'joining_date',
+        'designation',
+        'blood_group',
+        'date_of_birth',
+        'start_time',
+        'end_time',
+         'fcm_token',
+    ];
+
+    protected $attributes = [
+    'is_active' => 0,
+];
+
+    
+    protected $casts = [
+        'joining_date' => 'date',        
+        'date_of_birth' => 'date',       
+        'start_time' => 'string',         
+        'end_time' => 'string',          
+        'basic_salary' => 'decimal:2',   
+    ];
+  
+
+    
+    public function offerLetters()
+{
+    return $this->hasMany(OfferLetter::class, 'employee_id', 'id');
+}
+
+public function Terminations(){
+    return $this->hasMany(Termination::class, 'employee_id', 'employee_id');
+}
+
+public function  Attendances(){
+     return $this->hasMany(Attendance::class, 'employee_id', 'employee_id');
+}
+public function  Leavemanagements(){
+     return $this->hasMany(LeaveManagement::class, 'employee_id', 'employee_id');
+}
+
+}

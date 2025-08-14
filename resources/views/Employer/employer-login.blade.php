@@ -5,19 +5,653 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/epact-globe.webp">
 
-   <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/epact-globe.webp') }}">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Add your header/nav custom JS if any -->
-<link href="{{ asset('css/styles.css') }}" rel="stylesheet">
-<link href="{{ asset('css/faq.css') }}" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/faq.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 
 <body>
+
+    <style>
+        .nav-menu li.active>a {
+            color: #ff6600;
+            font-weight: bold;
+        }
+        
+        .nav-menu+.nav-menu>li:first-child {
+            margin-right: 20px !important;
+            background-color: black !important;
+        }
+        
+        li a {
+            font-family: 'Jost', sans-serif !important;
+        }
+        
+        .header {
+            background: #fff;
+            position: relative;
+            padding: 13px 0;
+            box-shadow: 0 -12px 14px -1px #333;
+            position: relative;
+            z-index: 9999;
+        }
+        
+        .nav-menu .dropdown-menu {
+            background-color: #fff;
+            border-radius: 8px;
+            min-width: 180px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+            border: none;
+        }
+        
+        .nav-menu .dropdown-menu a.dropdown-item {
+            color: #333;
+            padding: 10px 20px;
+            font-family: 'Jost', sans-serif;
+            font-size: 14px;
+            transition: background 0.2s ease;
+        }
+        
+        .nav-menu .dropdown-menu a.dropdown-item:hover {
+            background-color: #f5f5f5;
+            color: var(--epact-primary, #ff6600);
+            /* Replace with your primary color if customized */
+        }
+    </style>
+    <!-- END HEADER -->
+    <!-- End Navigation -->
+    <div class="clearfix"></div>
+    <!-- Top header  -->
+    <style>
+        .fa-regular,
+        .far {
+            font-family: "Font Awesome 6 Free" !important;
+            font-weight: 400;
+        }
+        
+        .fa-solid,
+        .fas {
+            font-family: "Font Awesome 6 Free" !important;
+            font-weight: 900;
+        }
+        
+        .fa-brands,
+        .fab {
+            font-family: "Font Awesome 6 Brands" !important;
+            font-weight: 400;
+        }
+        
+        @supports (font-variation-settings: normal) {
+             :root {
+                font-family: 'Jost', sans-serif;
+            }
+        }
+        /*------------------------------------
+         Fonts
+         ------------------------------------*/
+        
+        @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Jost', sans-serif !important;
+        }
+        
+        form input {
+            background-color: #eefff1;
+        }
+        
+        .Lcontainer {
+            display: flex;
+            flex-wrap: wrap;
+            position: relative;
+            padding: 0;
+            top: 40px;
+            width: 100%;
+            max-width: 1000px;
+            background: #fff;
+            border-radius: 16px;
+            border: 1px solid #0a856217;
+            box-shadow: 0 0px 12px rgba(237, 255, 244, 0.559);
+            overflow: hidden;
+        }
+        
+        .form-section {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            animation: fadeSlide 0.5s ease;
+        }
+        
+        #success-page {
+            position: relative;
+            left: 40%;
+        }
+        
+        .image-section {
+            flex: 1;
+            background: #eefff1;
+            /* background: #fff; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .image-section img {
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .form-section h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        input {
+            padding: 12px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        
+        .btn {
+            background: #0b8260;
+            color: white;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .toggle-link {
+            font-size: 14px;
+            text-align: center;
+            color: #0b8260;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        
+        .btn:hover {
+            border: 1px solid #0b8260;
+        }
+        
+        #otp-box {
+            display: none;
+            margin-top: 20px;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        
+        .otp-inputs {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        
+        .otp-inputs input {
+            width: 40px;
+            padding: 10px;
+            text-align: center;
+            font-size: 18px;
+        }
+        
+        svg {
+            width: 470px;
+        }
+        
+        .success-page {
+            max-width: 400px;
+            padding: 40px;
+            background: #fff;
+            border-radius: 12px;
+            text-align: center;
+            animation: fadeSlide 0.5s ease;
+        }
+        
+        .success-page img {
+            width: 80%;
+            margin-bottom: 20px;
+        }
+        
+        .vertical-divider {
+            width: 1px;
+            background-color: #44ac461e;
+            margin: 20px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .Lcontainer {
+                flex-direction: column;
+                border-radius: 0;
+                box-shadow: none;
+                top: 0;
+                padding: 0;
+            }
+            .image-section {
+                order: 1;
+                padding: 0px;
+                margin: 15px 18px;
+                max-height: 230px;
+            }
+            .form-section {
+                order: 2;
+                padding: 20px;
+            }
+            .vertical-divider {
+                display: none;
+            }
+            .form-section h2 {
+                text-align: center;
+            }
+            svg {
+                width: 100% !important;
+            }
+            @keyframes fadeSlide {
+                0% {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        }
+        
+        .user-icon::placeholder {
+            color: #999;
+            padding-left: 5px;
+        }
+        
+        .user-icon {
+            background: url('data:image/svg+xml;utf8,<svg fill="%23999" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm4.285 1.567A5.5 5.5 0 0 0 8 9c-1.69 0-3.197.765-4.285 1.567C2.7 11.733 2 12.854 2 14h12c0-1.146-.7-2.267-1.715-3.433z"/></svg>') no-repeat 10px center;
+            background-size: 16px 16px !important;
+            background-repeat: no-repeat !important;
+            background-position: 10px center !important;
+            padding-left: 40px;
+        }
+        
+        .pass-icon::placeholder {
+            color: #999;
+            padding-left: 5px;
+        }
+        
+        .pass-icon {
+            background: url('data:image/svg+xml;utf8,<svg fill="%23999" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M8 1a4 4 0 0 0-4 4v2H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1h-1V5a4 4 0 0 0-4-4zM5 5a3 3 0 0 1 6 0v2H5V5zm3 5a1.5 1.5 0 1 1-1 2.83V13h2v-0.17A1.5 1.5 0 0 1 8 10z"/></svg>') no-repeat 10px center;
+            background-size: 16px 16px !important;
+            background-repeat: no-repeat !important;
+            background-position: 10px center !important;
+            padding-left: 40px;
+        }
+        
+        .title {
+            display: flex;
+            margin-top: 30px;
+            flex-direction: column;
+            align-items: center;
+        }
+        /*--------------------------------------------------------------
+         # Hero Section
+         --------------------------------------------------------------*/
+        
+        .hero {
+            width: 100%;
+            min-height: 100px;
+            position: relative;
+            padding: 0px 0 0px 0;
+            display: flex;
+            align-items: center;
+            height: 200px;
+        }
+        
+        .hero .hero-bg {
+            position: absolute;
+            inset: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+        
+        .hero:before {
+            content: "";
+            background: color-mix(in srgb, var(--background-color), transparent 10%);
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+        }
+        
+        .hero .container {
+            position: relative;
+            height: 42vh;
+            z-index: 3;
+            top: -78px;
+        }
+        
+        .features section {
+            position: relative;
+        }
+        
+        .hero h1 {
+            margin: 0px 0 16px -6px;
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 56px;
+            color: color-mix(in srgb, var(--heading-color), transparent 30%);
+        }
+        
+        .hero h1 span {
+            color: var(--heading-color);
+            font-family: var(--heading-font);
+            padding: 0 0 12px 0;
+            border-bottom: 4px solid var(--accent-color);
+        }
+        
+        .hero p {
+            color: color-mix(in srgb, var(--default-color), transparent 30%);
+            margin: 5px 0 30px 0;
+            font-size: 22px;
+            font-weight: 400;
+        }
+        
+        .hero .btn-get-started {
+            color: var(--contrast-color);
+            background: var(--accent-color);
+            font-family: var(--heading-font);
+            font-weight: 400;
+            font-size: 15px;
+            letter-spacing: 1px;
+            display: inline-block;
+            padding: 10px 28px 12px 28px;
+            border-radius: 50px;
+            transition: 0.5s;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero .btn-get-started:hover {
+            color: var(--contrast-color);
+            background: color-mix(in srgb, var(--accent-color), transparent 15%);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero .btn-watch-video {
+            font-size: 16px;
+            transition: 0.5s;
+            margin-left: 25px;
+            color: var(--default-color);
+            font-weight: 600;
+        }
+        
+        .hero .btn-watch-video i {
+            color: var(--accent-color);
+            font-size: 32px;
+            transition: 0.3s;
+            line-height: 0;
+            margin-right: 8px;
+        }
+        
+        .hero .btn-watch-video:hover {
+            color: var(--accent-color);
+        }
+        
+        .hero .btn-watch-video:hover i {
+            color: color-mix(in srgb, var(--accent-color), transparent 15%);
+        }
+        
+        .hero .animated {
+            animation: up-down 2s ease-in-out infinite alternate-reverse both;
+        }
+        /* Employee login button */
+        
+        @media (max-width: 768px) {
+            .nav-menu.nav-menu-social {
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                left: 0;
+                align-items: baseline;
+            }
+            .nav-menu.nav-menu-social>li.list-buttons a,
+            .navigation-portrait .nav-menu.nav-menu-social>li>a {
+                padding: 15px 22px !important;
+                display: flex;
+                width: 320px;
+            }
+            .list-buttons.ms-2 {
+                margin-left: 0 !important;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .hero {
+                width: 100%;
+                min-height: 19px;
+                position: relative;
+                padding: 0 0 0px 0;
+                display: flex;
+                align-items: center;
+                height: 165px;
+            }
+            .hero h1 {
+                font-size: 28px;
+                line-height: 36px;
+            }
+            .hero p {
+                font-size: 18px;
+                line-height: 24px;
+                margin-bottom: 30px;
+            }
+            .hero .btn-get-started,
+            .hero .btn-watch-video {
+                font-size: 13px;
+            }
+        }
+        
+        .hero .hero-waves {
+            display: block;
+            width: 100%;
+            height: 40px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            z-index: 3;
+        }
+        
+        .hero .wave1 use {
+            animation: move-forever1 10s linear infinite;
+            animation-delay: -2s;
+            fill: var(--default-color);
+            opacity: 0.6;
+        }
+        
+        .hero .wave2 use {
+            animation: move-forever2 8s linear infinite;
+            animation-delay: -2s;
+            fill: var(--default-color);
+            opacity: 0.4;
+        }
+        
+        .hero .wave3 use {
+            animation: move-forever3 6s linear infinite;
+            animation-delay: -2s;
+            fill: var(--default-color);
+        }
+        
+        @keyframes move-forever1 {
+            0% {
+                transform: translate(85px, 0%);
+            }
+            100% {
+                transform: translate(-90px, 0%);
+            }
+        }
+        
+        @keyframes move-forever2 {
+            0% {
+                transform: translate(-90px, 0%);
+            }
+            100% {
+                transform: translate(85px, 0%);
+            }
+        }
+        
+        @keyframes move-forever3 {
+            0% {
+                transform: translate(-90px, 0%);
+            }
+            100% {
+                transform: translate(85px, 0%);
+            }
+        }
+        
+        @keyframes up-down {
+            0% {
+                transform: translateY(10px);
+            }
+            100% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .Breadcrumb {
+            position: relative;
+            top: 20px;
+        }
+        
+        #page-title {
+            margin-left: -6px;
+        }
+        
+        .heroimg {
+            position: relative;
+            top: 50px;
+            left: 125px;
+        }
+        
+        @media (max-width: 767.98px) {
+            .Breadcrumb {
+                position: relative;
+                top: 2px;
+            }
+            .animated {
+                position: relative;
+                bottom: 18px;
+                max-height: 350px;
+            }
+            .hero {
+                height: 20vh;
+                position: relative;
+                /* overflow: hidden; */
+                /* background-color: #000; fallback color */
+            }
+            .innercontent {
+                display: flex;
+                flex-direction: row-reverse;
+            }
+            .heroimg {
+                padding: 0;
+                margin: 0;
+                width: 198px !important;
+                top: -74px;
+                left: 1px;
+                position: relative;
+            }
+            .bannerTxt {
+                top: 10px;
+                z-index: 1;
+                position: relative;
+            }
+            .mobile-hero .hero-bg {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                opacity: 0.25;
+                z-index: -1;
+            }
+            .hero .container {
+                position: relative;
+                height: 37vh;
+                z-index: 3;
+                top: 68px;
+            }
+            .mobile-hero .hero-img {
+                max-height: 100%;
+                width: 100%;
+                object-fit: contain;
+            }
+            .breadcrumb-item a,
+            .breadcrumb-item,
+            .mobile-hero h1,
+            .mobile-hero p {
+                color: #fff !important;
+                font-size: 0.9rem;
+            }
+            .hero h1 {
+                font-size: 1.3rem;
+                line-height: 0;
+            }
+            .mobile-hero p {
+                font-size: 0.8rem;
+            }
+        }
+        
+        @media (max-width: 767.98px) {
+            .custom-width {
+                width: 94% !important;
+            }
+        }
+        
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            left: -10000px;
+            overflow: hidden;
+        }
+        
+        .text-white:hover {
+            color: rgb(13, 105, 44) !important;
+        }
+        
+        input.password-mask {
+            font-family: Verdana;
+        }
+        
+        .control,
+        fieldset {
+            margin: 6px 0;
+        }
+        
+        .required {
+            color: red;
+        }
+    </style>
     <!-- START HEADER -->
     <div id="preloader">
         <div class="preloader"><span></span><span></span></div>
@@ -82,659 +716,20 @@
                             <li><a href="pricing.html">Pricing</a></li>
                             <li><a href="faq.html">FAQ</a></li>
                             <li><a href="contact.html">Contact Us</a></li>
-                            <!-- <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="moreDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        More
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="moreDropdown">
-                           <li><a class="dropdown-item" href="terms.html">Terms & Conditions</a></li>
-                           <li><a class="dropdown-item" href="privacy.html">Privacy Policy</a></li>
-                        </ul>
-                     </li> -->
+
                         </ul>
                         <ul class="nav-menu nav-menu-social align-to-right">
                             <li class="bg-darker-btn " style=" border-radius: 3px; background-color: #333 !important;">
                                 <a href="./login.html" style="color: #fff !important;"><i class="bi bi-person-circle me-2" style="color: #fff !important;"></i>Employer Login</a>
                             </li>
                             <li class="list-buttons ms-2">
-                                <a href="{{ url('employee-login')}}"><i class="bi bi-person-circle me-2"></i>Employee Login</a>
+                                <a href="./employee-login.html"><i class="bi bi-person-circle me-2"></i>Employee Login</a>
                             </li>
                         </ul>
                     </div>
                 </nav>
             </div>
         </div>
-        <style>
-            .nav-menu li.active>a {
-                color: #ff6600;
-                font-weight: bold;
-            }
-            
-            .nav-menu+.nav-menu>li:first-child {
-                margin-right: 20px !important;
-                background-color: black !important;
-            }
-            
-            li a {
-                font-family: 'Jost', sans-serif !important;
-            }
-            
-            .header {
-                background: #fff;
-                position: relative;
-                padding: 13px 0;
-                box-shadow: 0 -12px 14px -1px #333;
-                position: relative;
-                z-index: 9999;
-            }
-            
-            .nav-menu .dropdown-menu {
-                background-color: #fff;
-                border-radius: 8px;
-                min-width: 180px;
-                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-                padding: 10px 0;
-                border: none;
-            }
-            
-            .nav-menu .dropdown-menu a.dropdown-item {
-                color: #333;
-                padding: 10px 20px;
-                font-family: 'Jost', sans-serif;
-                font-size: 14px;
-                transition: background 0.2s ease;
-            }
-            
-            .nav-menu .dropdown-menu a.dropdown-item:hover {
-                background-color: #f5f5f5;
-                color: var(--epact-primary, #ff6600);
-                /* Replace with your primary color if customized */
-            }
-        </style>
-        <!-- END HEADER -->
-        <!-- End Navigation -->
-        <div class="clearfix"></div>
-        <!-- Top header  -->
-        <style>
-            .fa-regular,
-            .far {
-                font-family: "Font Awesome 6 Free" !important;
-                font-weight: 400;
-            }
-            
-            .fa-solid,
-            .fas {
-                font-family: "Font Awesome 6 Free" !important;
-                font-weight: 900;
-            }
-            
-            .fa-brands,
-            .fab {
-                font-family: "Font Awesome 6 Brands" !important;
-                font-weight: 400;
-            }
-            
-            @supports (font-variation-settings: normal) {
-                 :root {
-                    font-family: 'Jost', sans-serif;
-                }
-            }
-            /*------------------------------------
-         Fonts
-         ------------------------------------*/
-            
-            @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap');
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-                font-family: 'Jost', sans-serif !important;
-            }
-            
-            form input {
-                background-color: #eefff1;
-            }
-            
-            .Lcontainer {
-                display: flex;
-                flex-wrap: wrap;
-                position: relative;
-                padding: 0;
-                top: 40px;
-                width: 100%;
-                max-width: 1000px;
-                background: #fff;
-                border-radius: 16px;
-                border: 1px solid #0a856217;
-                box-shadow: 0 0px 12px rgba(237, 255, 244, 0.559);
-                overflow: hidden;
-            }
-            
-            .form-section {
-                flex: 1;
-                padding: 40px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                animation: fadeSlide 0.5s ease;
-            }
-            
-            #success-page {
-                position: relative;
-                left: 40%;
-            }
-            
-            .image-section {
-                flex: 1;
-                background: #eefff1;
-                /* background: #fff; */
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding: 20px;
-            }
-            
-            .image-section img {
-                width: 100%;
-                max-width: 400px;
-            }
-            
-            .form-section h2 {
-                margin-bottom: 20px;
-                font-size: 24px;
-                color: #333;
-            }
-            
-            form {
-                display: flex;
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            input {
-                padding: 12px;
-                font-size: 14px;
-                border: 1px solid #ccc;
-                border-radius: 8px;
-            }
-            
-            .btn {
-                background: #0b8260;
-                color: white;
-                padding: 12px;
-                font-size: 16px;
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-            }
-            
-            .toggle-link {
-                font-size: 14px;
-                text-align: center;
-                color: #0b8260;
-                cursor: pointer;
-                text-decoration: underline;
-            }
-            
-            .btn:hover {
-                border: 1px solid #0b8260;
-            }
-            
-            #otp-box {
-                display: none;
-                margin-top: 20px;
-                background: #f9f9f9;
-                padding: 15px;
-                border-radius: 10px;
-            }
-            
-            .otp-inputs {
-                display: flex;
-                gap: 10px;
-                justify-content: center;
-                margin-top: 10px;
-            }
-            
-            .otp-inputs input {
-                width: 40px;
-                padding: 10px;
-                text-align: center;
-                font-size: 18px;
-            }
-            
-            svg {
-                width: 470px;
-            }
-            
-            .success-page {
-                max-width: 400px;
-                padding: 40px;
-                background: #fff;
-                border-radius: 12px;
-                text-align: center;
-                animation: fadeSlide 0.5s ease;
-            }
-            
-            .success-page img {
-                width: 80%;
-                margin-bottom: 20px;
-            }
-            
-            .vertical-divider {
-                width: 1px;
-                background-color: #44ac461e;
-                margin: 20px 0;
-            }
-            
-            @media (max-width: 768px) {
-                .Lcontainer {
-                    flex-direction: column;
-                    border-radius: 0;
-                    box-shadow: none;
-                    top: 0;
-                    padding: 0;
-                }
-                .image-section {
-                    order: 1;
-                    padding: 0px;
-                    margin: 15px 18px;
-                    max-height: 230px;
-                }
-                .form-section {
-                    order: 2;
-                    padding: 20px;
-                }
-                .vertical-divider {
-                    display: none;
-                }
-                .form-section h2 {
-                    text-align: center;
-                }
-                svg {
-                    width: 100% !important;
-                }
-                @keyframes fadeSlide {
-                    0% {
-                        opacity: 0;
-                        transform: translateY(20px);
-                    }
-                    100% {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-            }
-            
-            .user-icon::placeholder {
-                color: #999;
-                padding-left: 5px;
-            }
-            
-            .user-icon {
-                background: url('data:image/svg+xml;utf8,<svg fill="%23999" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm4.285 1.567A5.5 5.5 0 0 0 8 9c-1.69 0-3.197.765-4.285 1.567C2.7 11.733 2 12.854 2 14h12c0-1.146-.7-2.267-1.715-3.433z"/></svg>') no-repeat 10px center;
-                background-size: 16px 16px !important;
-                background-repeat: no-repeat !important;
-                background-position: 10px center !important;
-                padding-left: 40px;
-            }
-            
-            .pass-icon::placeholder {
-                color: #999;
-                padding-left: 5px;
-            }
-            
-            .pass-icon {
-                background: url('data:image/svg+xml;utf8,<svg fill="%23999" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M8 1a4 4 0 0 0-4 4v2H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1h-1V5a4 4 0 0 0-4-4zM5 5a3 3 0 0 1 6 0v2H5V5zm3 5a1.5 1.5 0 1 1-1 2.83V13h2v-0.17A1.5 1.5 0 0 1 8 10z"/></svg>') no-repeat 10px center;
-                background-size: 16px 16px !important;
-                background-repeat: no-repeat !important;
-                background-position: 10px center !important;
-                padding-left: 40px;
-            }
-            
-            .title {
-                display: flex;
-                margin-top: 30px;
-                flex-direction: column;
-                align-items: center;
-            }
-        </style>
-
-        <style>
-            /*--------------------------------------------------------------
-         # Hero Section
-         --------------------------------------------------------------*/
-            
-            .hero {
-                width: 100%;
-                min-height: 100px;
-                position: relative;
-                padding: 0px 0 0px 0;
-                display: flex;
-                align-items: center;
-                height: 200px;
-            }
-            
-            .hero .hero-bg {
-                position: absolute;
-                inset: 0;
-                display: block;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                z-index: 1;
-            }
-            
-            .hero:before {
-                content: "";
-                background: color-mix(in srgb, var(--background-color), transparent 10%);
-                position: absolute;
-                inset: 0;
-                z-index: 2;
-            }
-            
-            .hero .container {
-                position: relative;
-                height: 42vh;
-                z-index: 3;
-                top: -78px;
-            }
-            
-            .features section {
-                position: relative;
-            }
-            
-            .hero h1 {
-                margin: 0px 0 16px -6px;
-                font-size: 48px;
-                font-weight: 700;
-                line-height: 56px;
-                color: color-mix(in srgb, var(--heading-color), transparent 30%);
-            }
-            
-            .hero h1 span {
-                color: var(--heading-color);
-                font-family: var(--heading-font);
-                padding: 0 0 12px 0;
-                border-bottom: 4px solid var(--accent-color);
-            }
-            
-            .hero p {
-                color: color-mix(in srgb, var(--default-color), transparent 30%);
-                margin: 5px 0 30px 0;
-                font-size: 22px;
-                font-weight: 400;
-            }
-            
-            .hero .btn-get-started {
-                color: var(--contrast-color);
-                background: var(--accent-color);
-                font-family: var(--heading-font);
-                font-weight: 400;
-                font-size: 15px;
-                letter-spacing: 1px;
-                display: inline-block;
-                padding: 10px 28px 12px 28px;
-                border-radius: 50px;
-                transition: 0.5s;
-                box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
-            }
-            
-            .hero .btn-get-started:hover {
-                color: var(--contrast-color);
-                background: color-mix(in srgb, var(--accent-color), transparent 15%);
-                box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
-            }
-            
-            .hero .btn-watch-video {
-                font-size: 16px;
-                transition: 0.5s;
-                margin-left: 25px;
-                color: var(--default-color);
-                font-weight: 600;
-            }
-            
-            .hero .btn-watch-video i {
-                color: var(--accent-color);
-                font-size: 32px;
-                transition: 0.3s;
-                line-height: 0;
-                margin-right: 8px;
-            }
-            
-            .hero .btn-watch-video:hover {
-                color: var(--accent-color);
-            }
-            
-            .hero .btn-watch-video:hover i {
-                color: color-mix(in srgb, var(--accent-color), transparent 15%);
-            }
-            
-            .hero .animated {
-                animation: up-down 2s ease-in-out infinite alternate-reverse both;
-            }
-            /* Employee login button */
-            
-            @media (max-width: 768px) {
-                .nav-menu.nav-menu-social {
-                    display: flex;
-                    flex-direction: column;
-                    position: relative;
-                    left: 0;
-                    align-items: baseline;
-                }
-                .nav-menu.nav-menu-social>li.list-buttons a,
-                .navigation-portrait .nav-menu.nav-menu-social>li>a {
-                    padding: 15px 22px !important;
-                    display: flex;
-                    width: 320px;
-                }
-                .list-buttons.ms-2 {
-                    margin-left: 0 !important;
-                }
-            }
-            
-            @media (max-width: 640px) {
-                .hero {
-                    width: 100%;
-                    min-height: 19px;
-                    position: relative;
-                    padding: 0 0 0px 0;
-                    display: flex;
-                    align-items: center;
-                    height: 165px;
-                }
-                .hero h1 {
-                    font-size: 28px;
-                    line-height: 36px;
-                }
-                .hero p {
-                    font-size: 18px;
-                    line-height: 24px;
-                    margin-bottom: 30px;
-                }
-                .hero .btn-get-started,
-                .hero .btn-watch-video {
-                    font-size: 13px;
-                }
-            }
-            
-            .hero .hero-waves {
-                display: block;
-                width: 100%;
-                height: 40px;
-                position: absolute;
-                left: 0;
-                bottom: 0;
-                right: 0;
-                z-index: 3;
-            }
-            
-            .hero .wave1 use {
-                animation: move-forever1 10s linear infinite;
-                animation-delay: -2s;
-                fill: var(--default-color);
-                opacity: 0.6;
-            }
-            
-            .hero .wave2 use {
-                animation: move-forever2 8s linear infinite;
-                animation-delay: -2s;
-                fill: var(--default-color);
-                opacity: 0.4;
-            }
-            
-            .hero .wave3 use {
-                animation: move-forever3 6s linear infinite;
-                animation-delay: -2s;
-                fill: var(--default-color);
-            }
-            
-            @keyframes move-forever1 {
-                0% {
-                    transform: translate(85px, 0%);
-                }
-                100% {
-                    transform: translate(-90px, 0%);
-                }
-            }
-            
-            @keyframes move-forever2 {
-                0% {
-                    transform: translate(-90px, 0%);
-                }
-                100% {
-                    transform: translate(85px, 0%);
-                }
-            }
-            
-            @keyframes move-forever3 {
-                0% {
-                    transform: translate(-90px, 0%);
-                }
-                100% {
-                    transform: translate(85px, 0%);
-                }
-            }
-            
-            @keyframes up-down {
-                0% {
-                    transform: translateY(10px);
-                }
-                100% {
-                    transform: translateY(-10px);
-                }
-            }
-            
-            .Breadcrumb {
-                position: relative;
-                top: 20px;
-            }
-            
-            #page-title {
-                margin-left: -6px;
-            }
-            
-            .heroimg {
-                position: relative;
-                top: 50px;
-                left: 125px;
-            }
-            
-            @media (max-width: 767.98px) {
-                .Breadcrumb {
-                    position: relative;
-                    top: 2px;
-                }
-                .animated {
-                    position: relative;
-                    bottom: 18px;
-                    max-height: 350px;
-                }
-                .hero {
-                    height: 20vh;
-                    position: relative;
-                    /* overflow: hidden; */
-                    /* background-color: #000; fallback color */
-                }
-                .innercontent {
-                    display: flex;
-                    flex-direction: row-reverse;
-                }
-                .heroimg {
-                    padding: 0;
-                    margin: 0;
-                    width: 198px !important;
-                    top: -74px;
-                    left: 1px;
-                    position: relative;
-                }
-                .bannerTxt {
-                    top: 10px;
-                    z-index: 1;
-                    position: relative;
-                }
-                .mobile-hero .hero-bg {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    opacity: 0.25;
-                    z-index: -1;
-                }
-                .hero .container {
-                    position: relative;
-                    height: 37vh;
-                    z-index: 3;
-                    top: 68px;
-                }
-                .mobile-hero .hero-img {
-                    max-height: 100%;
-                    width: 100%;
-                    object-fit: contain;
-                }
-                .breadcrumb-item a,
-                .breadcrumb-item,
-                .mobile-hero h1,
-                .mobile-hero p {
-                    color: #fff !important;
-                    font-size: 0.9rem;
-                }
-                .hero h1 {
-                    font-size: 1.3rem;
-                    line-height: 0;
-                }
-                .mobile-hero p {
-                    font-size: 0.8rem;
-                }
-            }
-            
-            .visually-hidden {
-                position: absolute;
-                width: 1px;
-                height: 1px;
-                left: -10000px;
-                overflow: hidden;
-            }
-            
-            .text-white:hover {
-                color: rgb(13, 105, 44) !important;
-            }
-            
-            input.password-mask {
-                font-family: Verdana;
-            }
-            
-            .control,
-            fieldset {
-                margin: 6px 0;
-            }
-            
-            .required {
-                color: red;
-            }
-        </style>
         <section id="hero" class="hero section dark-background position-relative overflow-hidden">
             <img src="assets/img/About/hero-bg-2.jpg" alt="Hero Background" class="hero-bg position-absolute w-100 h-100 object-fit-cover z-n1">
             <div class="container py-5">
@@ -781,14 +776,6 @@
          </svg>
         </section>
         <!-- LOGIN + SIGNUP PAGE -->
-        <style>
-            @media (max-width: 767.98px) {
-                .custom-width {
-                    width: 94% !important;
-                }
-            }
-        </style>
-
         <div class="title w-100">
             <h2>Login</h2>
             <p class="custom-width text-center" style="width: 50%; max-width: 500px; margin: 0 auto;">
@@ -806,16 +793,17 @@
                 <form id="loginForm" onsubmit="return validateForm(event)">
                     <div class="mb-3">
                         <label for="username" class="form-label mb-1"> Mail or Phone<span class="required mx-1">*</span></label>
-                        <input type="text" id="username" class="form-control text-sm-muted user-icon" name="company_email" placeholder="Enter Email or Phone" required />
+                        <input type="text" id="username" class="form-control text-sm-muted user-icon" placeholder="Enter Email or Phone" required />
                         <div class="invalid-feedback">Please enter valid email or phone number.</div>
                     </div>
                     <div class="col-12 position-relative mb-3">
                         <label>Password <span class="required">*</span></label>
-                        <input type="password" class="form-control pass-icon password-mask" id="password" name="" placeholder="Enter Password" required>
+                        <input type="password" class="form-control pass-icon password-mask" id="password" placeholder="Enter Password" required>
                         <span class="toggle-password" onclick="togglePassword('password', this)" style="position:absolute; right:15px; top:38px; cursor:pointer;">
                            <i class="bi bi-eye-slash-fill"></i>
                         </span>
                         <div class="invalid-feedback">Please enter correct password.</div>
+
                     </div>
                     <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
                         <div class="form-check">
@@ -824,10 +812,17 @@
             <p class="p-0 m-0">Remember Me</p>
          </label>
                         </div>
+                        <span class="toggle-link">
+         <a href="forget-password.html" style="font-size: 14px;">Forgot Password?</a>
+      </span>
                     </div>
                     <button type="submit" class="btn w-100 text-white">Log In</button>
+                    <div class="text-center mt-3">
+                        <span class="toggle-link">
+         <a href="register.html">Don't have an account? Sign Up</a>
+      </span>
+                    </div>
                 </form>
-
 
             </div>
             <!-- <div class="vertical-divider"></div> -->
@@ -836,7 +831,7 @@
         <br>
         <br>
         <br>
-
+@include('Frontend.layouts.footer')
 
 
         <script>
@@ -890,21 +885,9 @@
                 }
             });
         </script>
-        <!-- Footer Section -->
-        <div id="footer">
-            @include('frontend.layouts.footer');
-        </div>
-       <script src="{{ asset('assets/js/pages.js') }}"></script>
-<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-<script src="{{ asset('assets/js/popper.min.js') }}"></script>
-<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('assets/js/rangeslider.js') }}"></script>
-<script src="{{ asset('assets/js/jquery.nice-select.min.js') }}"></script>
-<script src="{{ asset('assets/js/slick.js') }}"></script>
-<script src="{{ asset('assets/js/counterup.min.js') }}"></script>
-<script src="{{ asset('assets/js/custom.js') }}"></script>
         <script>
             // Validations
+
             function validateForm(event) {
                 event.preventDefault();
 
@@ -930,11 +913,13 @@
 
                 // If both fields are filled, redirect
                 if (isValid) {
-                    window.location.href = "employee/dashboard-employee";
+                window.location.href = "{{ route('dashboard-employer') }}";
+
                 }
 
                 return false;
             }
+
 
             // 👇 Reset outline while typing
             document.getElementById("username").addEventListener("input", function() {
@@ -944,6 +929,21 @@
                 this.classList.remove("is-invalid");
             });
         </script>
+        {{-- <!-- Footer Section -->
+        <div id="footer">
+
+        </div> --}}
+
+        <script src="./js/pages.js"></script>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/popper.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/rangeslider.js"></script>
+        <script src="assets/js/jquery.nice-select.min.js"></script>
+        <script src="assets/js/slick.js"></script>
+        <script src="assets/js/counterup.min.js"></script>
+        <script src="assets/js/custom.js"></script>
+
 </body>
 
 </html>

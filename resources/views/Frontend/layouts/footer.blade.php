@@ -5,7 +5,7 @@
 
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget">
-                        <img src="assets/img/w-Epact.png" class="img-footer img-flio
+                        <img src="../assets/img/w-Epact.png" class="img-footer img-flio
                             " alt="logo">
                         <div class="footer-add">
                             <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo</p>

@@ -87,7 +87,7 @@ fetch("../components/breadcrumbs.html")
   });
 
   // Load footer
-  fetch("footer.html")
+  fetch("footer")
     .then(res => res.text())
     .then(data => {
       document.getElementById("footer").innerHTML = data;
