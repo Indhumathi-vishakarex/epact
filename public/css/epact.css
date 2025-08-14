@@ -1,0 +1,81 @@
+.nav-brand {
+    margin-top: 0px;
+}
+.header {
+    padding: 10px 0;
+}
+.nav-menu>li>a {
+    font-size: 14px;
+}
+.nav-brand img {
+    max-width: 175px;
+}
+img.img-footer {
+    max-width: 250px;
+    margin-bottom: 1rem;
+}
+.price-card:hover {
+    background: #04343a;
+}
+.price-card:hover button.btn-light-main {
+    background: #ffc107;
+    color: #000;
+}
+
+
+.price-card:hover h6.text-main {
+    color: #fff !important;
+}
+.price-card:hover sup, .price-card:hover span, .price-card:hover sub, .price-card:hover li {
+    color: #fff !important;
+}
+.price-card:hover li span {
+    background-color: rgba(255, 255, 255, 0.04) !important;
+}
+.bg-darker-btn a {
+    border-radius: 4px;
+    position: relative;
+    background: #262d2f;
+    border: 2px solid #262d2f !important;
+    color: #fff !important;
+    display: flex !important;
+    align-items: center;
+}
+.download-apple {
+    background: #e3e3e3;
+    transition: all 0.3s ease;
+}
+.download-google {
+    background: #e3e3e3;
+    transition: all 0.3s ease;
+}
+.download-apple:hover {
+    background: #262d2f;
+    border: none !important;
+}
+.download-google:hover {
+    background: #0b8260;
+    border: none !important;
+}
+.download-apple:hover p, .download-apple:hover h5 {
+    color: #fff !important;
+}
+.download-google:hover p, .download-google:hover h5 {
+    color: #fff !important;
+}
+.work-process {
+    padding: 5px 0;
+    transition: all 0.3s ease;
+}
+.work-process:hover {
+    background: #ecf3f1;
+    padding: 5px 10px;
+    border-radius: 6px;
+}
+.work-process:hover .work-process-icon {
+    transform: rotateY(360deg);
+    transition: all 0.4s;
+}
+.vl-elfo-caption {
+    width: 80%;
+}

@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+   <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/epact-globe.webp') }}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Add your header/nav custom JS if any -->
+<link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+<link href="{{ asset('css/faq.css') }}" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- START HEADER -->
+    <div id="preloader">
+        <div class="preloader"><span></span><span></span></div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Top header  -->
+        <!-- START HEADER -->
+        <div class="topbar bg-dark d-flex align-items-center">
+            <div class="container d-flex justify-content-center justify-content-md-between">
+                <div class="contact-info d-flex align-items-center gap-2">
+                    <div class="d-flex align-items-center gap-2 text-light">
+                        <i class="bi bi-envelope"></i>
+                        <a href="mailto:info@epact.com" class="text-light">info@epact.com</a>
+                    </div>
+                    <div class="d-flex align-items-center gap-2 text-light">
+                        <i class="bi bi-telephone ms-4"></i>
+                        <a href="tel:02033765250" class="text-light">020 3376 5250</a>
+                    </div>
+                </div>
+                <div class="social-links d-none d-md-flex align-items-center">
+                    <ul class="d-flex align-items-center justify-content-end gap-3">
+                        <li><a href="#" class="social-link"><i class="bi bi-facebook"></i></a></li>
+                        <li><a href="#" class="social-link"><i class="bi bi-twitter"></i></a></li>
+                        <li><a href="#" class="social-link"><i class="bi bi-instagram"></i></a></li>
+                        <li><a href="#" class="social-link"><i class="bi bi-youtube"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Navigation -->
+        <div class="header header-light">
+            <div class="container">
+                <nav id="navigation" class="navigation navigation-landscape">
+                    <div class="nav-header">
+                        <a class="nav-brand" href="./index.html"><img src="assets/img/w-Epact.png" class="logo img-fluid" alt="logo"></a>
+                        <div class="nav-toggle"></div>
+                        <div class="mobile_nav">
+                            <ul>
+                                <li class="list-buttons">
+                                    <a href="JavaScript:Void(0);" data-bs-toggle="modal" data-bs-target="#login">
+                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                 <path opacity="0.3"
+                                    d="M22 12C22 17.5 17.5 22 12 22C6.5 22 2 17.5 2 12C2 6.5 6.5 2 12 2C17.5 2 22 6.5 22 12ZM12 7C10.3 7 9 8.3 9 10C9 11.7 10.3 13 12 13C13.7 13 15 11.7 15 10C15 8.3 13.7 7 12 7Z"
+                                    class="fill-main" />
+                                 <path
+                                    d="M12 22C14.6 22 17 21 18.7 19.4C17.9 16.9 15.2 15 12 15C8.8 15 6.09999 16.9 5.29999 19.4C6.99999 21 9.4 22 12 22Z"
+                                    class="fill-main" />
+                              </svg>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="nav-menus-wrapper">
+                        <ul class="nav-menu">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="pricing.html">Pricing</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                            <!-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="moreDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        More
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="moreDropdown">
+                           <li><a class="dropdown-item" href="terms.html">Terms & Conditions</a></li>
+                           <li><a class="dropdown-item" href="privacy.html">Privacy Policy</a></li>
+                        </ul>
+                     </li> -->
+                        </ul>
+                        <ul class="nav-menu nav-menu-social align-to-right">
+                            <li class="bg-darker-btn " style=" border-radius: 3px; background-color: #333 !important;">
+                                <a href="./login.html" style="color: #fff !important;"><i class="bi bi-person-circle me-2" style="color: #fff !important;"></i>Employer Login</a>
+                            </li>
+                            <li class="list-buttons ms-2">
+                                <a href="./employee-login.html"><i class="bi bi-person-circle me-2"></i>Employee Login</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <style>
+            .nav-menu li.active>a {
+                color: #ff6600;
+                font-weight: bold;
+            }
+            
+            .nav-menu+.nav-menu>li:first-child {
+                margin-right: 20px !important;
+                background-color: black !important;
+            }
+            
+            li a {
+                font-family: 'Jost', sans-serif !important;
+            }
+            
+            .header {
+                background: #fff;
+                position: relative;
+                padding: 13px 0;
+                box-shadow: 0 -12px 14px -1px #333;
+                position: relative;
+                z-index: 9999;
+            }
+            
+            .nav-menu .dropdown-menu {
+                background-color: #fff;
+                border-radius: 8px;
+                min-width: 180px;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+                padding: 10px 0;
+                border: none;
+            }
+            
+            .nav-menu .dropdown-menu a.dropdown-item {
+                color: #333;
+                padding: 10px 20px;
+                font-family: 'Jost', sans-serif;
+                font-size: 14px;
+                transition: background 0.2s ease;
+            }
+            
+            .nav-menu .dropdown-menu a.dropdown-item:hover {
+                background-color: #f5f5f5;
+                color: var(--epact-primary, #ff6600);
+                /* Replace with your primary color if customized */
+            }
+        </style>
+        <!-- END HEADER -->
+        <!-- End Navigation -->
+        <div class="clearfix"></div>
+        <!-- Top header  -->
+        <style>
+            .fa-regular,
+            .far {
+                font-family: "Font Awesome 6 Free" !important;
+                font-weight: 400;
+            }
+            
+            .fa-solid,
+            .fas {
+                font-family: "Font Awesome 6 Free" !important;
+                font-weight: 900;
+            }
+            
+            .fa-brands,
+            .fab {
+                font-family: "Font Awesome 6 Brands" !important;
+                font-weight: 400;
+            }
+            
+            @supports (font-variation-settings: normal) {
+                 :root {
+                    font-family: 'Jost', sans-serif;
+                }
+            }
+            /*------------------------------------
+         Fonts
+         ------------------------------------*/
+            
+            @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap');
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Jost', sans-serif !important;
+            }
+            
+            form input {
+                background-color: #eefff1;
+            }
+            
+            .Lcontainer {
+                display: flex;
+                flex-wrap: wrap;
+                position: relative;
+                padding: 0;
+                top: 40px;
+                width: 100%;
+                max-width: 1000px;
+                background: #fff;
+                border-radius: 16px;
+                border: 1px solid #0a856217;
+                box-shadow: 0 0px 12px rgba(237, 255, 244, 0.559);
+                overflow: hidden;
+            }
+            
+            .form-section {
+                flex: 1;
+                padding: 40px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                animation: fadeSlide 0.5s ease;
+            }
+            
+            #success-page {
+                position: relative;
+                left: 40%;
+            }
+            
+            .image-section {
+                flex: 1;
+                background: #eefff1;
+                /* background: #fff; */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+            }
+            
+            .image-section img {
+                width: 100%;
+                max-width: 400px;
+            }
+            
+            .form-section h2 {
+                margin-bottom: 20px;
+                font-size: 24px;
+                color: #333;
+            }
+            
+            form {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            input {
+                padding: 12px;
+                font-size: 14px;
+                border: 1px solid #ccc;
+                border-radius: 8px;
+            }
+            
+            .btn {
+                background: #0b8260;
+                color: white;
+                padding: 12px;
+                font-size: 16px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+            
+            .toggle-link {
+                font-size: 14px;
+                text-align: center;
+                color: #0b8260;
+                cursor: pointer;
+                text-decoration: underline;
+            }
+            
+            .btn:hover {
+                border: 1px solid #0b8260;
+            }
+            
+            #otp-box {
+                display: none;
+                margin-top: 20px;
+                background: #f9f9f9;
+                padding: 15px;
+                border-radius: 10px;
+            }
+            
+            .otp-inputs {
+                display: flex;
+                gap: 10px;
+                justify-content: center;
+                margin-top: 10px;
+            }
+            
+            .otp-inputs input {
+                width: 40px;
+                padding: 10px;
+                text-align: center;
+                font-size: 18px;
+            }
+            
+            svg {
+                width: 470px;
+            }
+            
+            .success-page {
+                max-width: 400px;
+                padding: 40px;
+                background: #fff;
+                border-radius: 12px;
+                text-align: center;
+                animation: fadeSlide 0.5s ease;
+            }
+            
+            .success-page img {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+            
+            .vertical-divider {
+                width: 1px;
+                background-color: #44ac461e;
+                margin: 20px 0;
+            }
+            
+            @media (max-width: 768px) {
+                .Lcontainer {
+                    flex-direction: column;
+                    border-radius: 0;
+                    box-shadow: none;
+                    top: 0;
+                    padding: 0;
+                }
+                .image-section {
+                    order: 1;
+                    padding: 0px;
+                    margin: 15px 18px;
+                    max-height: 230px;
+                }
+                .form-section {
+                    order: 2;
+                    padding: 20px;
+                }
+                .vertical-divider {
+                    display: none;
+                }
+                .form-section h2 {
+                    text-align: center;
+                }
+                svg {
+                    width: 100% !important;
+                }
+                @keyframes fadeSlide {
+                    0% {
+                        opacity: 0;
+                        transform: translateY(20px);
+                    }
+                    100% {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+            }
+            
+            .user-icon::placeholder {
+                color: #999;
+                padding-left: 5px;
+            }
+            
+            .user-icon {
+                background: url('data:image/svg+xml;utf8,<svg fill="%23999" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm4.285 1.567A5.5 5.5 0 0 0 8 9c-1.69 0-3.197.765-4.285 1.567C2.7 11.733 2 12.854 2 14h12c0-1.146-.7-2.267-1.715-3.433z"/></svg>') no-repeat 10px center;
+                background-size: 16px 16px !important;
+                background-repeat: no-repeat !important;
+                background-position: 10px center !important;
+                padding-left: 40px;
+            }
+            
+            .pass-icon::placeholder {
+                color: #999;
+                padding-left: 5px;
+            }
+            
+            .pass-icon {
+                background: url('data:image/svg+xml;utf8,<svg fill="%23999" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M8 1a4 4 0 0 0-4 4v2H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1h-1V5a4 4 0 0 0-4-4zM5 5a3 3 0 0 1 6 0v2H5V5zm3 5a1.5 1.5 0 1 1-1 2.83V13h2v-0.17A1.5 1.5 0 0 1 8 10z"/></svg>') no-repeat 10px center;
+                background-size: 16px 16px !important;
+                background-repeat: no-repeat !important;
+                background-position: 10px center !important;
+                padding-left: 40px;
+            }
+            
+            .title {
+                display: flex;
+                margin-top: 30px;
+                flex-direction: column;
+                align-items: center;
+            }
+        </style>
+
+        <style>
+            /*--------------------------------------------------------------
+         # Hero Section
+         --------------------------------------------------------------*/
+            
+            .hero {
+                width: 100%;
+                min-height: 100px;
+                position: relative;
+                padding: 0px 0 0px 0;
+                display: flex;
+                align-items: center;
+                height: 200px;
+            }
+            
+            .hero .hero-bg {
+                position: absolute;
+                inset: 0;
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                z-index: 1;
+            }
+            
+            .hero:before {
+                content: "";
+                background: color-mix(in srgb, var(--background-color), transparent 10%);
+                position: absolute;
+                inset: 0;
+                z-index: 2;
+            }
+            
+            .hero .container {
+                position: relative;
+                height: 42vh;
+                z-index: 3;
+                top: -78px;
+            }
+            
+            .features section {
+                position: relative;
+            }
+            
+            .hero h1 {
+                margin: 0px 0 16px -6px;
+                font-size: 48px;
+                font-weight: 700;
+                line-height: 56px;
+                color: color-mix(in srgb, var(--heading-color), transparent 30%);
+            }
+            
+            .hero h1 span {
+                color: var(--heading-color);
+                font-family: var(--heading-font);
+                padding: 0 0 12px 0;
+                border-bottom: 4px solid var(--accent-color);
+            }
+            
+            .hero p {
+                color: color-mix(in srgb, var(--default-color), transparent 30%);
+                margin: 5px 0 30px 0;
+                font-size: 22px;
+                font-weight: 400;
+            }
+            
+            .hero .btn-get-started {
+                color: var(--contrast-color);
+                background: var(--accent-color);
+                font-family: var(--heading-font);
+                font-weight: 400;
+                font-size: 15px;
+                letter-spacing: 1px;
+                display: inline-block;
+                padding: 10px 28px 12px 28px;
+                border-radius: 50px;
+                transition: 0.5s;
+                box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+            }
+            
+            .hero .btn-get-started:hover {
+                color: var(--contrast-color);
+                background: color-mix(in srgb, var(--accent-color), transparent 15%);
+                box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+            }
+            
+            .hero .btn-watch-video {
+                font-size: 16px;
+                transition: 0.5s;
+                margin-left: 25px;
+                color: var(--default-color);
+                font-weight: 600;
+            }
+            
+            .hero .btn-watch-video i {
+                color: var(--accent-color);
+                font-size: 32px;
+                transition: 0.3s;
+                line-height: 0;
+                margin-right: 8px;
+            }
+            
+            .hero .btn-watch-video:hover {
+                color: var(--accent-color);
+            }
+            
+            .hero .btn-watch-video:hover i {
+                color: color-mix(in srgb, var(--accent-color), transparent 15%);
+            }
+            
+            .hero .animated {
+                animation: up-down 2s ease-in-out infinite alternate-reverse both;
+            }
+            /* Employee login button */
+            
+            @media (max-width: 768px) {
+                .nav-menu.nav-menu-social {
+                    display: flex;
+                    flex-direction: column;
+                    position: relative;
+                    left: 0;
+                    align-items: baseline;
+                }
+                .nav-menu.nav-menu-social>li.list-buttons a,
+                .navigation-portrait .nav-menu.nav-menu-social>li>a {
+                    padding: 15px 22px !important;
+                    display: flex;
+                    width: 320px;
+                }
+                .list-buttons.ms-2 {
+                    margin-left: 0 !important;
+                }
+            }
+            
+            @media (max-width: 640px) {
+                .hero {
+                    width: 100%;
+                    min-height: 19px;
+                    position: relative;
+                    padding: 0 0 0px 0;
+                    display: flex;
+                    align-items: center;
+                    height: 165px;
+                }
+                .hero h1 {
+                    font-size: 28px;
+                    line-height: 36px;
+                }
+                .hero p {
+                    font-size: 18px;
+                    line-height: 24px;
+                    margin-bottom: 30px;
+                }
+                .hero .btn-get-started,
+                .hero .btn-watch-video {
+                    font-size: 13px;
+                }
+            }
+            
+            .hero .hero-waves {
+                display: block;
+                width: 100%;
+                height: 40px;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                z-index: 3;
+            }
+            
+            .hero .wave1 use {
+                animation: move-forever1 10s linear infinite;
+                animation-delay: -2s;
+                fill: var(--default-color);
+                opacity: 0.6;
+            }
+            
+            .hero .wave2 use {
+                animation: move-forever2 8s linear infinite;
+                animation-delay: -2s;
+                fill: var(--default-color);
+                opacity: 0.4;
+            }
+            
+            .hero .wave3 use {
+                animation: move-forever3 6s linear infinite;
+                animation-delay: -2s;
+                fill: var(--default-color);
+            }
+            
+            @keyframes move-forever1 {
+                0% {
+                    transform: translate(85px, 0%);
+                }
+                100% {
+                    transform: translate(-90px, 0%);
+                }
+            }
+            
+            @keyframes move-forever2 {
+                0% {
+                    transform: translate(-90px, 0%);
+                }
+                100% {
+                    transform: translate(85px, 0%);
+                }
+            }
+            
+            @keyframes move-forever3 {
+                0% {
+                    transform: translate(-90px, 0%);
+                }
+                100% {
+                    transform: translate(85px, 0%);
+                }
+            }
+            
+            @keyframes up-down {
+                0% {
+                    transform: translateY(10px);
+                }
+                100% {
+                    transform: translateY(-10px);
+                }
+            }
+            
+            .Breadcrumb {
+                position: relative;
+                top: 20px;
+            }
+            
+            #page-title {
+                margin-left: -6px;
+            }
+            
+            .heroimg {
+                position: relative;
+                top: 50px;
+                left: 125px;
+            }
+            
+            @media (max-width: 767.98px) {
+                .Breadcrumb {
+                    position: relative;
+                    top: 2px;
+                }
+                .animated {
+                    position: relative;
+                    bottom: 18px;
+                    max-height: 350px;
+                }
+                .hero {
+                    height: 20vh;
+                    position: relative;
+                    /* overflow: hidden; */
+                    /* background-color: #000; fallback color */
+                }
+                .innercontent {
+                    display: flex;
+                    flex-direction: row-reverse;
+                }
+                .heroimg {
+                    padding: 0;
+                    margin: 0;
+                    width: 198px !important;
+                    top: -74px;
+                    left: 1px;
+                    position: relative;
+                }
+                .bannerTxt {
+                    top: 10px;
+                    z-index: 1;
+                    position: relative;
+                }
+                .mobile-hero .hero-bg {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    opacity: 0.25;
+                    z-index: -1;
+                }
+                .hero .container {
+                    position: relative;
+                    height: 37vh;
+                    z-index: 3;
+                    top: 68px;
+                }
+                .mobile-hero .hero-img {
+                    max-height: 100%;
+                    width: 100%;
+                    object-fit: contain;
+                }
+                .breadcrumb-item a,
+                .breadcrumb-item,
+                .mobile-hero h1,
+                .mobile-hero p {
+                    color: #fff !important;
+                    font-size: 0.9rem;
+                }
+                .hero h1 {
+                    font-size: 1.3rem;
+                    line-height: 0;
+                }
+                .mobile-hero p {
+                    font-size: 0.8rem;
+                }
+            }
+            
+            .visually-hidden {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                left: -10000px;
+                overflow: hidden;
+            }
+            
+            .text-white:hover {
+                color: rgb(13, 105, 44) !important;
+            }
+            
+            input.password-mask {
+                font-family: Verdana;
+            }
+            
+            .control,
+            fieldset {
+                margin: 6px 0;
+            }
+            
+            .required {
+                color: red;
+            }
+        </style>
+        <section id="hero" class="hero section dark-background position-relative overflow-hidden">
+            <img src="assets/img/About/hero-bg-2.jpg" alt="Hero Background" class="hero-bg position-absolute w-100 h-100 object-fit-cover z-n1">
+            <div class="container py-5">
+                <div class="row align-items-center innercontent gy-4 justify-content-between">
+                    <!-- Text and Breadcrumb -->
+                    <div class="col-lg-6 col-md-12 Breadcrumb">
+                        <!-- Breadcrumb -->
+                        <nav aria-label="breadcrumb" class="mb-2">
+                            <ol class="breadcrumb mb-1">
+                                <li class="breadcrumb-item">
+                                    <a href="index.html" class="text-light">Home</a>
+                                </li>
+                                <li id="breadcrumb-current" class="breadcrumb-item active text-light" aria-current="page">
+                                    Login
+                                </li>
+                            </ol>
+                        </nav>
+                        <!-- Title and Description -->
+                        <div class="bannerTxt">
+                            <h1 id="page-title" class="text-light fw-bold mb-3">Employer Login</h1>
+                            <p id="page-desc" class="text-light"></p>
+                        </div>
+                    </div>
+                    <!-- Hero Image -->
+                    <div class="col-lg-5 col-md-8 mx-md-auto text-center w-25 ml-5 heroimg" data-aos="zoom-out" data-aos-delay="100">
+                        <img src="assets/img/About/419050699_11721179.png" class="img-fluid animated" alt="Hero Image">
+                    </div>
+                </div>
+            </div>
+            <!-- SVG Waves -->
+            <svg class="hero-waves w-100 position-absolute bottom-0 start-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
+            <defs>
+               <path id="wave-path" d="M-160 44c30 0 58-18 88-18s58 18 88 18 58-18 88-18 58 18 88 18v44h-352z"></path>
+            </defs>
+            <g class="wave1">
+               <use xlink:href="#wave-path" x="50" y="3"></use>
+            </g>
+            <g class="wave2">
+               <use xlink:href="#wave-path" x="50" y="0"></use>
+            </g>
+            <g class="wave3">
+               <use xlink:href="#wave-path" x="50" y="9"></use>
+            </g>
+         </svg>
+        </section>
+        <!-- LOGIN + SIGNUP PAGE -->
+        <style>
+            @media (max-width: 767.98px) {
+                .custom-width {
+                    width: 94% !important;
+                }
+            }
+        </style>
+
+        <div class="title w-100">
+            <h2>Login</h2>
+            <p class="custom-width text-center" style="width: 50%; max-width: 500px; margin: 0 auto;">
+                Welcome back! Please sign in to your account using your registered email and password.</p>
+        </div>
+        <div class="Lcontainer container" id="auth-container">
+            <!-- <div class="image-section"></div> -->
+            <div class="image-section">
+                <div class="image-side">
+                    <svg class="floating" xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 512 512"><defs><style>.cls-1{fill:#caffe1;}.cls-2{fill:#62d883;}.cls-3{fill:#fff;}.cls-4{fill:#148e2a;}</style></defs><path d="M54.71,251.82a.74.74,0,0,1-.52-1.27l1.73-1.73a.75.75,0,0,1,1.06,0,.74.74,0,0,1,0,1.05l-1.74,1.74A.76.76,0,0,1,54.71,251.82Z"/><path d="M61.27,245.27a.75.75,0,0,1-.53-1.27l1.74-1.74a.74.74,0,0,1,1.05,0,.75.75,0,0,1,0,1.06l-1.74,1.73A.7.7,0,0,1,61.27,245.27Z"/><path d="M63,251.82a.73.73,0,0,1-.52-.21l-1.74-1.74a.74.74,0,0,1,1-1.05l1.74,1.73a.75.75,0,0,1,0,1.06A.77.77,0,0,1,63,251.82Z"/><path d="M56.45,245.27a.74.74,0,0,1-.53-.22l-1.73-1.73a.75.75,0,0,1,1.05-1.06L57,244a.75.75,0,0,1-.53,1.27Z"/><path class="cls-1" d="M287.15,49.24c-13.38,0-135.48,1.84-202.2,102.57-35.51,53.62-59.34,141.3-24.53,189.08,10.28,14.1,15.67,11,70.62,44.39,75.43,45.84,75.08,57.64,106.3,68.13C278,467.07,338.05,467,383,433.51c51-38,58.6-101.26,66.16-164.58,7.42-62.14,14.94-125.1-24.53-171.47C383.75,49.39,318,49.29,287.15,49.24Z"/><path class="cls-2" d="M445,324.92,208.91,292.08a11.87,11.87,0,0,1-10.37-11.78L195.3,115.61a81.68,81.68,0,0,1,8.43-5.37,9.12,9.12,0,0,1,5.2-.85l235.42,30a11.87,11.87,0,0,1,10.37,11.78V313a9.17,9.17,0,0,1-3.37,7.13C449.47,321.63,445,324.92,445,324.92Z"/><path class="cls-3" d="M437.83,327.11l-235.42-30A11.87,11.87,0,0,1,192,285.31V123.54a9.23,9.23,0,0,1,10.4-9.15l235.42,30a11.87,11.87,0,0,1,10.37,11.78V318A9.23,9.23,0,0,1,437.83,327.11Z"/><path class="cls-1" d="M432.82,320.44,208,291.77a8.63,8.63,0,0,1-7.54-8.56v-156a6.16,6.16,0,0,1,6.94-6.11l224.79,28.66a8.64,8.64,0,0,1,7.54,8.57v156A6.16,6.16,0,0,1,432.82,320.44Z"/><path class="cls-4" d="M439,327.93a10.66,10.66,0,0,1-1.26-.08l-235.42-30a12.64,12.64,0,0,1-11-12.51V123.54a10,10,0,0,1,11.23-9.89l235.42,30a12.64,12.64,0,0,1,11,12.52V318a10,10,0,0,1-10,10Zm-1.07-1.56a8.48,8.48,0,0,0,9.55-8.42V156.19a11.15,11.15,0,0,0-9.72-11l-235.42-30a8.49,8.49,0,0,0-9.55,8.41V285.31a11.14,11.14,0,0,0,9.72,11Z"/><path class="cls-2" d="M300.48,422.37,58.36,391.15a3.35,3.35,0,0,1-2.94-3.42c0-1.09.11-8.8.11-8.8l128-73.18a36.54,36.54,0,0,1,22-4.14l239.06,30.83a4.1,4.1,0,0,1,3.24,2.46l.39.9s-.21,6.43-.12,7.93a3.31,3.31,0,0,1-1.7,3.09l-124.8,71.36A34,34,0,0,1,300.48,422.37Z"/><path class="cls-3" d="M88.14,386.37l-28.91-3.74A3.36,3.36,0,0,1,58,376.37l124.13-70.9a34.09,34.09,0,0,1,21.18-4.2l241.25,31.17a3.36,3.36,0,0,1,1.24,6.26L321.66,409.6a34,34,0,0,1-21.18,4.2L88.14,386.37Z"/><path class="cls-1" d="M347.72,374.44l-209.2-27.22a3,3,0,0,1-1.12-5.65l49.19-27.81a30.72,30.72,0,0,1,19.12-3.8l209.2,27.23a3,3,0,0,1,1.12,5.65l-49.19,27.81A30.66,30.66,0,0,1,347.72,374.44Z"/><path class="cls-2" d="M304.75,414.81a35.2,35.2,0,0,1-4.36-.27L182.24,399.39a.75.75,0,0,1,.19-1.49l118.15,15.16A33.47,33.47,0,0,0,321.29,409l124.13-70.9a2.62,2.62,0,0,0-1-4.87L203.2,302a33.47,33.47,0,0,0-20.71,4.11l-17.39,9.94a.75.75,0,0,1-.74-1.3l17.39-9.93a35,35,0,0,1,21.64-4.3L444.65,331.7a4.11,4.11,0,0,1,1.51,7.65L322,410.25A35.06,35.06,0,0,1,304.75,414.81Z"/><path class="cls-2" d="M414.11,312.78,228.19,289.26a7,7,0,0,1-5.8-6.85V55.54a5.14,5.14,0,0,1,5.8-5.38L414.11,73.67a7,7,0,0,1,5.8,6.85V307.39A5.15,5.15,0,0,1,414.11,312.78Z"/><path d="M414.81,313.57a7,7,0,0,1-.79-.05h0L228.1,290a7.74,7.74,0,0,1-6.45-7.59V55.54a6.24,6.24,0,0,1,2-4.76,5.77,5.77,0,0,1,4.59-1.36L414.2,72.93a7.74,7.74,0,0,1,6.45,7.59V307.39a6.21,6.21,0,0,1-2,4.76A5.69,5.69,0,0,1,414.81,313.57ZM414.2,312a4.29,4.29,0,0,0,3.42-1,4.77,4.77,0,0,0,1.54-3.64V80.52A6.21,6.21,0,0,0,414,74.41L228.1,50.9a4.25,4.25,0,0,0-3.42,1,4.77,4.77,0,0,0-1.54,3.64V282.41a6.21,6.21,0,0,0,5.14,6.11Z"/><path class="cls-3" d="M385.13,187.27,257.65,171.14a2.9,2.9,0,0,1-2.42-2.85V156.05a2.14,2.14,0,0,1,2.42-2.24l127.48,16.12a2.91,2.91,0,0,1,2.42,2.86V185A2.15,2.15,0,0,1,385.13,187.27Z"/><path class="cls-3" d="M386.1,222.05,257.65,205.81a2.33,2.33,0,0,1-1.94-2.29V190.27a1.72,1.72,0,0,1,1.94-1.8L386.1,204.72A2.32,2.32,0,0,1,388,207v13.26A1.71,1.71,0,0,1,386.1,222.05Z"/><path class="cls-1" d="M366.06,255.72l-89.34-11.3a3.19,3.19,0,0,1-2.65-3.14V229.55a2.35,2.35,0,0,1,2.65-2.47l89.34,11.3a3.2,3.2,0,0,1,2.66,3.14v11.73A2.36,2.36,0,0,1,366.06,255.72Z"/><ellipse class="cls-4" cx="321.99" cy="116.63" rx="26.68" ry="30.11" transform="translate(1.11 236.28) rotate(-40.36)"/><ellipse class="cls-3" cx="321.51" cy="112.67" rx="9.31" ry="10.51" transform="translate(3.56 235.02) rotate(-40.36)"/><path class="cls-3" d="M301.36,133.56a42.21,42.21,0,0,1,11.8-8.57,4.24,4.24,0,0,1,3.45.05,16.43,16.43,0,0,0,11.7.75,3.74,3.74,0,0,1,2.85.49,38.36,38.36,0,0,1,12.07,11.66C330.8,150.44,310.88,146,301.36,133.56Z"/><path class="cls-1" d="M322,146.37c-16.19-2-29.36-16.9-29.36-33.3S305.79,84.94,322,86.9s29.37,16.9,29.37,33.3S338.18,148.33,322,146.37Zm0-57c-14.87-1.81-27,9-27,24s12.1,28.78,27,30.58,27-9,27-24S336.86,91.13,322,89.33Z"/><path class="cls-4" d="M85.61,256c-6.89,2.56-12.74,7.94-16.72,15-10.16,18.08-36.66,71.07-24.12,112,15.35,50.12,145.18,48.78,179,27.45,8.59-5.42,43.77-42-1.38-72.36-41.38-27.86-58.48-7.41-77.56-18.39s-32.86-55-39.9-61.27C100.4,254.43,93.33,253.17,85.61,256Z"/><path class="cls-2" d="M125.55,376.64a.77.77,0,0,1-.53-.22c-17.16-17.15-57-19.18-57.45-19.19a.75.75,0,0,1,.07-1.49c1.66.07,40.87,2.07,58.43,19.62a.75.75,0,0,1-.52,1.28Z"/><path class="cls-2" d="M165.74,377.58a.63.63,0,0,1-.3-.07c-13.38-5.95-22.83-.61-22.92-.56a.75.75,0,0,1-1-.26.74.74,0,0,1,.27-1c.4-.24,10.16-5.8,24.27.48a.74.74,0,0,1,.38,1A.75.75,0,0,1,165.74,377.58Z"/><path class="cls-3" d="M226.66,409.29c.12.39,14.46,16.59,14.46,16.59l-9.56,3.77L220,415.6Z"/><path d="M231.56,430.39a.74.74,0,0,1-.58-.27l-11.54-14.05a.75.75,0,0,1,.07-1l6.64-6.3a.75.75,0,0,1,.7-.18.73.73,0,0,1,.47.37c.58.82,8.88,10.26,14.35,16.45a.71.71,0,0,1,.17.67.73.73,0,0,1-.45.52l-9.56,3.76A.86.86,0,0,1,231.56,430.39ZM221,415.66l10.75,13.09,8.06-3.17c-9-10.16-12.14-13.82-13.26-15.19Z"/><path class="cls-3" d="M231.4,423.05a4.81,4.81,0,0,1,2.1-2.33,4.65,4.65,0,0,1,5.14.62c3.6,3,13.37,11.48,18.91,19.61,1.95,2.87.81,6.52-3.84,6.27-7.61-.41-19.64-4-29.45-13.15a4.51,4.51,0,0,1-1.37-4.12,21.85,21.85,0,0,1,1.21-4.23,3.08,3.08,0,0,1,3.56-1.79l1.32.31A2.11,2.11,0,0,0,231.4,423.05Z"/><path d="M254.17,448h-.5c-8-.44-20.07-4.17-29.92-13.36a5.21,5.21,0,0,1-1.59-4.79,21.53,21.53,0,0,1,1.26-4.39,3.79,3.79,0,0,1,4.41-2.23l1.32.32a1.38,1.38,0,0,0,1.57-.78h0a5.57,5.57,0,0,1,2.43-2.67,5.39,5.39,0,0,1,6,.69c3.89,3.24,13.52,11.64,19.05,19.77a5,5,0,0,1,.52,5.23C258.2,446.61,257,448,254.17,448Zm-27.24-23.39a2.31,2.31,0,0,0-2.14,1.42,20.41,20.41,0,0,0-1.17,4.08,3.73,3.73,0,0,0,1.15,3.43c9.55,8.91,21.23,12.54,29,13,1.77.1,3.05-.42,3.63-1.45a3.52,3.52,0,0,0-.45-3.66c-5.43-8-14.94-16.27-18.77-19.46a3.92,3.92,0,0,0-4.31-.53,4,4,0,0,0-1.77,2A2.88,2.88,0,0,1,228.8,425l-1.31-.32A2.74,2.74,0,0,0,226.93,424.59Z"/><path d="M252.13,444.21c-4.42,0-12.75-1.88-25.93-11.86a.76.76,0,0,1-.14-1.05.75.75,0,0,1,1.05-.14c19.95,15.12,28.15,11.09,28.23,11a.74.74,0,0,1,1,.31.76.76,0,0,1-.31,1A9,9,0,0,1,252.13,444.21Z"/><path d="M243.85,435.65a.74.74,0,0,1-.5-.2.75.75,0,0,1,0-1.06l3.87-4.17a.74.74,0,0,1,1.09,1l-3.87,4.18A.75.75,0,0,1,243.85,435.65Z"/><path d="M240.43,432.83a.73.73,0,0,1-.52-.21.75.75,0,0,1,0-1.06l4.26-4.29a.75.75,0,1,1,1.06,1.05L241,432.61A.73.73,0,0,1,240.43,432.83Z"/><polygon class="cls-3" points="196.77 417.95 192.37 437.28 185.13 431.77 188.48 413.19 196.77 417.95"/><path d="M192.37,438a.75.75,0,0,1-.45-.16l-7.24-5.51a.73.73,0,0,1-.28-.72l3.34-18.58a.75.75,0,0,1,.42-.54.76.76,0,0,1,.69,0l8.29,4.76a.74.74,0,0,1,.36.81l-4.4,19.33a.77.77,0,0,1-.48.53A.7.7,0,0,1,192.37,438ZM186,431.45l6,4.54,4-17.66-6.9-4Z"/><path class="cls-3" d="M194.86,433.78c-.44,6-1.5,18.1-6.05,26.68-1.22,2.3-6,2.13-7.71-1-3.61-6.54-8.22-17.65-5.51-31.07a3.39,3.39,0,0,1,1.89-2.38,22.6,22.6,0,0,1,5.5-1.66,2.27,2.27,0,0,1,2.64,2l.57,4.73.6-.78a3.24,3.24,0,0,1,3.87-1l2.27,1A3.44,3.44,0,0,1,194.86,433.78Z"/><path d="M185.65,462.76a6,6,0,0,1-5.21-2.95c-5.8-10.53-7.68-21.15-5.58-31.57a4.14,4.14,0,0,1,2.3-2.92,23.6,23.6,0,0,1,5.68-1.71,3,3,0,0,1,3.52,2.59l.36,3a4,4,0,0,1,4.24-.66l2.27,1a4.19,4.19,0,0,1,2.38,4.27h0c-.57,7.68-1.82,18.83-6.14,27a4.12,4.12,0,0,1-3.77,1.95Zm-2.27-37.71-.27,0a21.6,21.6,0,0,0-5.32,1.6,2.6,2.6,0,0,0-1.46,1.85c-2,10.06-.21,20.35,5.42,30.56a4.45,4.45,0,0,0,3.94,2.18,2.72,2.72,0,0,0,2.46-1.16c4.68-8.82,5.62-21.58,6-26.39a2.69,2.69,0,0,0-1.49-2.79l-2.27-1a2.49,2.49,0,0,0-3,.76l-.6.79a.74.74,0,0,1-.79.26.75.75,0,0,1-.54-.63l-.57-4.73a1.5,1.5,0,0,0-.61-1A1.45,1.45,0,0,0,183.38,425.05Zm11.48,8.73h0Z"/><path d="M184.84,459a.75.75,0,0,1-.63-.35c-8.43-13.25-6.52-28.51-6.44-29.15a.75.75,0,0,1,1.48.19c0,.16-1.92,15.38,6.22,28.16a.74.74,0,0,1-.23,1A.72.72,0,0,1,184.84,459Z"/><path d="M193.38,442.77l-.21,0-5.62-1.63a.73.73,0,0,1-.51-.92.74.74,0,0,1,.92-.51l5.63,1.62a.75.75,0,0,1-.21,1.47Z"/><path d="M192.3,447.66a.75.75,0,0,1-.26-.05l-5.32-2a.74.74,0,0,1,.53-1.39l5.31,2a.74.74,0,0,1,.44,1A.75.75,0,0,1,192.3,447.66Z"/><path d="M147.7,329.66s26.94-3.2,51.21,10.53a19.42,19.42,0,0,1,9.84,17c-.08,13.95-1.56,39.46-10.11,61.6a2.37,2.37,0,0,1-3.16,1.31l-10.93-4.84a2.34,2.34,0,0,1-1.37-1.79c-.81-5.11-3.52-24.57-.8-38.68,3.16-16.38-49.62-33.73-49.62-33.73Z"/><path d="M229.61,412.7l-9.74,6.4a1.59,1.59,0,0,1-2-.26c-6-6.57-39.81-43.45-48.29-48.28-9.31-5.31-26.72-13.29-42.52-13.2s-19.14-10.88-19.14-10.88l22.54-14.56s39,4.41,55.48,17.82c14.88,12.1,39.55,53,44.2,60.83A1.59,1.59,0,0,1,229.61,412.7Z"/><path class="cls-4" d="M208.57,376.69a.77.77,0,0,1-.61-.31c-6.57-9.15-16.8-21.4-22.53-26.06-6.21-5.05-16.36-9.41-30.15-12.94a.75.75,0,0,1,.37-1.45c14,3.59,24.34,8,30.72,13.23,5.83,4.75,16.18,17.12,22.8,26.35a.74.74,0,0,1-.17,1A.76.76,0,0,1,208.57,376.69Z"/><path class="cls-3" d="M130.06,296.43l2.89,5.94a43.54,43.54,0,0,0,15.29,17.39l2.66,1.74a9.22,9.22,0,0,0,5.78,1.48l.31,0a12.75,12.75,0,0,1,8.68,2.55h0l-7,2.25a17,17,0,0,1-12.89-1,36.22,36.22,0,0,1-12.4-10.2c-8.17-10.64-10.06-17.19-10.06-17.19Z"/><path d="M153.38,329.34a17.46,17.46,0,0,1-7.92-1.89A36.65,36.65,0,0,1,132.81,317c-8.16-10.63-10.1-17.17-10.18-17.44a.74.74,0,0,1,.41-.89l6.72-3a.74.74,0,0,1,1,.35l2.89,5.94a42.71,42.71,0,0,0,15,17.09l2.66,1.75a8.58,8.58,0,0,0,5.31,1.36l.31,0a13.43,13.43,0,0,1,9.19,2.7.72.72,0,0,1,.29.72.74.74,0,0,1-.51.58l-7,2.25A18.19,18.19,0,0,1,153.38,329.34ZM124.27,299.8c.68,1.85,3.15,7.78,9.72,16.33a35.26,35.26,0,0,0,12.14,10,16.17,16.17,0,0,0,12.33.93l5.51-1.77A12,12,0,0,0,157,323.7l-.31,0a10,10,0,0,1-6.24-1.6l-2.66-1.75a44.33,44.33,0,0,1-15.55-17.68l-2.58-5.3Z"/><path d="M121.17,353.4s-8.86,6.76-13.73,4.82,3.51-10.28,6-10.6S121.17,353.4,121.17,353.4Z"/><path d="M122.71,253.64c4-.55,8.53,2.94,8.08,8.89-.37,4.86-5.44,6.32-7.79,8.92-7.59,8.39-.3,17.5-6.24,25.87-5.65,8-14.22,2.49-25.7,11.64-9,7.21,23.81-3.74,12.31,3.86-9.17,6.07-26.39,5.56-36.11-5.59-9.25-10.6-11.38-26.52-1.9-34.2,8.52-6.91,14.53,1.15,23.61-5.33s6.5-12.58,12.09-15.25C108.71,248.8,111.41,255.21,122.71,253.64Z"/><path class="cls-3" d="M75.57,313.05a70.81,70.81,0,0,1,2-8.82c2.32-7.13,3.9-11.77,11.85-16a23.83,23.83,0,0,1,3.72-1.57L98,285s19.83-5.67,27.77,2a12.29,12.29,0,0,1,2,2.14l5.18,7.8,0,0a8.24,8.24,0,0,0-4.06,11.7c2.83,5,6.73,10.76,10.6,13.17,1.23.76,11.1,4.82,11.1,4.82s2.43,7.39-12.77,13.72-26.26,8.63-29.45,16.45c-1.89,4.63-9.57-17.57-14.52-38.37a8.24,8.24,0,0,0-8.79-6.31Z"/><path d="M107.6,358.23h-.1c-.71-.05-2.4-.18-6.87-13C98,337.68,95.23,328,93,318.66a7.54,7.54,0,0,0-8-5.74l-9.37.87a.75.75,0,0,1-.81-.87,69.44,69.44,0,0,1,2-8.92c2.27-7,3.91-12,12.21-16.43a24.09,24.09,0,0,1,3.84-1.63l4.8-1.6c.86-.25,20.37-5.71,28.53,2.16l.34.32a10.37,10.37,0,0,1,1.75,2l5.17,7.79a.74.74,0,0,1,.09.63.7.7,0,0,1-.43.47l0,0a7.56,7.56,0,0,0-4.26,4.51,7.48,7.48,0,0,0,.57,6.13c3.73,6.56,7.31,11,10.35,12.91.86.53,7,3.14,11,4.76a.74.74,0,0,1,.42.46c.11.32,2.46,8.11-13.19,14.64-3.42,1.43-6.7,2.67-9.59,3.77-9.93,3.78-17.11,6.51-19.46,12.27C108.57,358.06,108,358.23,107.6,358.23Zm-.15-1.45ZM85.69,311.39a9.06,9.06,0,0,1,8.77,6.93c4.77,20.06,10.93,37.05,13.06,38.36l0-.1c2.59-6.37,10-9.19,20.31-13.1,2.88-1.1,6.14-2.34,9.55-3.76,12.52-5.22,12.59-11.09,12.4-12.49-2-.82-9.69-4-10.84-4.73-3.29-2-6.95-6.56-10.86-13.43a9,9,0,0,1,3.66-12.4l-4.7-7.08a9.75,9.75,0,0,0-1.53-1.69l-.34-.33c-7.55-7.28-26.86-1.87-27.06-1.81l-4.77,1.59a23.9,23.9,0,0,0-3.6,1.53c-7.78,4.15-9.26,8.69-11.5,15.58a64.14,64.14,0,0,0-1.81,7.75l8.4-.78C85.15,311.41,85.42,311.39,85.69,311.39Z"/><path class="cls-3" d="M134.78,331.72l-7.36-2.09a3.23,3.23,0,0,0-3.1.74l-3.2,2.95a3.26,3.26,0,0,1-2.24.87c-3.63,0-20.34-3.92-22.17-6.69-.91-1.37-2.28-6.17-3.31-10.14A7,7,0,0,0,86,312.14l-7.38.69s3.16,17.69,9.53,23.05c4.94,4.16,16.12,5.76,32.09,3.9a10.36,10.36,0,0,0,6-4.07c1.67-2.24,6.1-1.38,8.66-2.16A1,1,0,0,0,134.78,331.72Z"/><path d="M107.94,341.3c-9.5,0-16.53-1.65-20.32-4.85C81.12,331,78,313.69,77.84,313a.7.7,0,0,1,.14-.58.68.68,0,0,1,.52-.29l7.38-.7a7.75,7.75,0,0,1,8.24,5.78c1.89,7.26,2.82,9.33,3.21,9.92,1.55,2.34,17.58,6.31,21.56,6.35a2.53,2.53,0,0,0,1.73-.66l3.19-3a4,4,0,0,1,3.82-.91L135,331h0a1.7,1.7,0,0,1,0,3.26,15.24,15.24,0,0,1-3.34.45c-2,.13-4.06.26-5,1.45a11.07,11.07,0,0,1-6.42,4.36A108.12,108.12,0,0,1,107.94,341.3ZM79.46,313.49c.7,3.48,3.79,17.33,9.12,21.82,4.91,4.13,16.39,5.49,31.52,3.73h0a9.75,9.75,0,0,0,5.44-3.78c1.29-1.73,3.82-1.89,6-2a13.85,13.85,0,0,0,3-.39.18.18,0,0,0,.15-.19.19.19,0,0,0-.15-.2l-7.36-2.1a2.49,2.49,0,0,0-2.39.58l-3.2,2.95a4,4,0,0,1-2.72,1.06h0c-3.57,0-20.74-3.92-22.78-7-.78-1.18-1.93-4.67-3.42-10.37A6.25,6.25,0,0,0,86,312.88Z"/><path class="cls-3" d="M98.77,285.17s4.14-13.36,4.29-15a2.86,2.86,0,0,1-1.25-2.73c.14-3.86,4-1.95,4-1.95l.38.09a11.74,11.74,0,0,0,6.64-.33l4.49-1.56s.94,1.65-.15,4.83a10.94,10.94,0,0,0-.15,5.12.9.9,0,0,1-.75,1l-1.2.18a8.18,8.18,0,0,1-2.22,3.25,1.46,1.46,0,0,1-1,.37,6.42,6.42,0,0,1-2.21-.51l-.67,5.67,3-.07s1.07,3.55-4.57,6.12c-3.11,1.42-7.52,1.13-10.84.59a1.84,1.84,0,0,1-.64-3.41Z"/><path d="M101.51,291.46a32.37,32.37,0,0,1-5.15-.45,2.58,2.58,0,0,1-.89-4.78l2.68-1.56c1.52-4.92,3.69-12.17,4.1-14.15a3.8,3.8,0,0,1-1.18-3.08,3.09,3.09,0,0,1,1.34-2.78c1.37-.81,3.18-.06,3.63.14l.3.08a11.11,11.11,0,0,0,6.23-.31l4.48-1.57a.75.75,0,0,1,.9.34c0,.08,1.09,2-.1,5.44a10.38,10.38,0,0,0-.11,4.77,1.64,1.64,0,0,1-1.37,1.86l-.8.13a8.6,8.6,0,0,1-2.24,3.12,2.21,2.21,0,0,1-1.58.57,7.31,7.31,0,0,1-1.54-.25l-.46,3.89,2.12-.05a.78.78,0,0,1,.73.53c.05.17,1.19,4.21-5,7A15.12,15.12,0,0,1,101.51,291.46Zm2.35-25.68a1.41,1.41,0,0,0-.69.16c-.38.23-.58.75-.61,1.55a2.15,2.15,0,0,0,.86,2.05.77.77,0,0,1,.38.72c-.15,1.65-3.89,13.76-4.32,15.13a.75.75,0,0,1-.33.43l-2.93,1.7a1.07,1.07,0,0,0-.53,1.14,1.08,1.08,0,0,0,.91.88c3.1.51,7.43.83,10.41-.53,3.69-1.68,4.2-3.72,4.22-4.68l-2.3.05a.78.78,0,0,1-.57-.24.71.71,0,0,1-.19-.59l.67-5.67a.74.74,0,0,1,.37-.55.73.73,0,0,1,.66-.05,5.74,5.74,0,0,0,2,.46.7.7,0,0,0,.5-.18,7.57,7.57,0,0,0,2-3,.75.75,0,0,1,.57-.45l1.2-.18a.14.14,0,0,0,.12-.17,11.8,11.8,0,0,1,.18-5.47,6.93,6.93,0,0,0,.39-3.64L113.06,266a12.61,12.61,0,0,1-7.07.35l-.38-.09-.15-.06A4.2,4.2,0,0,0,103.86,265.78Zm-5.09,19.39h0Z"/><path d="M109.58,278.72a.87.87,0,0,1-.31-.07l-.83-.39a.75.75,0,1,1,.64-1.35l.82.39a.75.75,0,0,1,.36,1A.76.76,0,0,1,109.58,278.72Z"/><path d="M170.28,324.75l-34,10.33,11.34-38.56a4.54,4.54,0,0,1,3-3l27.58-8.38a2.26,2.26,0,0,1,2.89,2.74Z"/><path class="cls-3" d="M162.17,309.55a5.11,5.11,0,0,1-3,3.2c-1.24.38-1.93-.44-1.53-1.83a5.15,5.15,0,0,1,3-3.2C161.89,307.34,162.58,308.16,162.17,309.55Z"/><path d="M169.09,327.35l-53.31,16.21a2.09,2.09,0,0,1-2.6-1.39l-.15-.29,57.29-17.42.16.29A2.09,2.09,0,0,1,169.09,327.35Z"/><polygon class="cls-3" points="204.59 135.62 245.27 147.45 274.14 115.33 204.59 135.62"/><polygon class="cls-1" points="224.86 154.71 219.18 139.86 257 124.41 226.33 141.94 234.84 144.41 224.86 154.71"/><path class="cls-3" d="M225.83,150.44h-.09a.69.69,0,0,1-.6-.77L226,143a.69.69,0,1,1,1.37.17l-.8,6.65A.7.7,0,0,1,225.83,150.44Z"/><path d="M297.33,442.24a.76.76,0,0,1-.56-.26.75.75,0,0,1,.07-1.05l1.84-1.62a.73.73,0,0,1,1.05.06.74.74,0,0,1-.07,1.05l-1.83,1.63A.78.78,0,0,1,297.33,442.24Z"/><path d="M304.27,436.09a.71.71,0,0,1-.55-.25.73.73,0,0,1,.06-1l1.84-1.63a.74.74,0,0,1,1.05.07.75.75,0,0,1-.06,1l-1.84,1.63A.77.77,0,0,1,304.27,436.09Z"/><path d="M305.61,442.74a.72.72,0,0,1-.56-.25l-1.63-1.84a.74.74,0,0,1,.07-1,.75.75,0,0,1,1.05.06l1.62,1.84a.73.73,0,0,1-.06,1.05A.72.72,0,0,1,305.61,442.74Z"/><path d="M299.46,435.8a.71.71,0,0,1-.55-.25l-1.63-1.84a.75.75,0,0,1,1.12-1l1.62,1.84a.75.75,0,0,1-.56,1.24Z"/><path class="cls-4" d="M116,209.89c-1.74,0-3.49,0-5.21-.16a.76.76,0,0,1-.7-.8.72.72,0,0,1,.79-.69c2,.12,3.94.17,5.91.15h0a.75.75,0,0,1,0,1.5Zm6.76-.27a.75.75,0,0,1-.06-1.49c1.94-.15,3.91-.38,5.87-.67a.76.76,0,0,1,.85.63.75.75,0,0,1-.63.85c-2,.29-4,.52-6,.68Zm-17.86-.5h-.1c-2-.28-4-.64-5.93-1.07a.75.75,0,0,1-.57-.89.74.74,0,0,1,.89-.56c1.91.42,3.87.77,5.81,1a.74.74,0,0,1-.1,1.48Zm29.65-1.22a.74.74,0,0,1-.72-.59.75.75,0,0,1,.57-.89c1.9-.4,3.84-.87,5.76-1.39a.75.75,0,1,1,.39,1.44c-2,.53-3.91,1-5.84,1.41Zm-41.29-1.33a.54.54,0,0,1-.22,0c-1.91-.57-3.82-1.23-5.7-2a.75.75,0,0,1,.54-1.39c1.84.71,3.72,1.36,5.59,1.93a.75.75,0,0,1,.5.93A.76.76,0,0,1,93.29,206.57Zm52.81-1.79a.75.75,0,0,1-.23-1.46c1.84-.61,3.72-1.28,5.58-2a.75.75,0,1,1,.54,1.39c-1.89.73-3.79,1.41-5.66,2A.59.59,0,0,1,146.1,204.78Zm-63.92-2.55a.73.73,0,0,1-.35-.09,26.33,26.33,0,0,1-5-3.52.75.75,0,1,1,1-1.11,24.59,24.59,0,0,0,4.72,3.32.74.74,0,0,1-.35,1.4Zm75.06-1.75a.73.73,0,0,1-.68-.44.75.75,0,0,1,.38-1c1.78-.78,3.59-1.63,5.38-2.51a.75.75,0,1,1,.66,1.34c-1.81.89-3.64,1.75-5.44,2.54A.8.8,0,0,1,157.24,200.48ZM168,195.21a.75.75,0,0,1-.35-1.4c1.71-.93,3.45-1.92,5.17-2.93a.74.74,0,0,1,1,.26.75.75,0,0,1-.26,1c-1.73,1-3.49,2-5.22,3A.77.77,0,0,1,168,195.21Zm-94.66-.79a.74.74,0,0,1-.6-.3A36.86,36.86,0,0,1,69.45,189a.74.74,0,0,1,.32-1,.75.75,0,0,1,1,.31,35.33,35.33,0,0,0,3.1,4.94.75.75,0,0,1-.15,1.05A.73.73,0,0,1,73.29,194.42Zm104.94-5.29a.77.77,0,0,1-.63-.34.76.76,0,0,1,.23-1c1.65-1.05,3.32-2.16,5-3.29a.74.74,0,0,1,.84,1.23c-1.65,1.14-3.33,2.26-5,3.32A.72.72,0,0,1,178.23,189.13ZM67.75,183.9a.75.75,0,0,1-.71-.5,47.69,47.69,0,0,1-1.64-5.83.75.75,0,1,1,1.46-.31,47.58,47.58,0,0,0,1.59,5.65.75.75,0,0,1-.45,1A.77.77,0,0,1,67.75,183.9Zm120.33-1.54a.77.77,0,0,1-.61-.31.75.75,0,0,1,.16-1c1.59-1.17,3.18-2.38,4.74-3.6a.74.74,0,1,1,.92,1.17c-1.57,1.23-3.18,2.46-4.77,3.63A.75.75,0,0,1,188.08,182.36Zm9.4-7.38a.72.72,0,0,1-.57-.27.74.74,0,0,1,.09-1.05c1.52-1.27,3-2.58,4.52-3.88a.74.74,0,0,1,1,.06.75.75,0,0,1-.06,1c-1.49,1.32-3,2.64-4.55,3.92A.78.78,0,0,1,197.48,175ZM65.22,172.26a.75.75,0,0,1-.74-.67c-.15-1.62-.23-3.26-.23-4.89,0-.38,0-.77,0-1.16a.75.75,0,0,1,.75-.73h0a.75.75,0,0,1,.73.76c0,.38,0,.76,0,1.13,0,1.58.08,3.18.23,4.75a.76.76,0,0,1-.68.81ZM206.42,167a.74.74,0,0,1-.54-.23.75.75,0,0,1,0-1.06c2-1.86,3.39-3.3,4.24-4.18a.75.75,0,0,1,1.06,0,.76.76,0,0,1,0,1.06c-.86.89-2.31,2.35-4.29,4.23A.76.76,0,0,1,206.42,167ZM65.49,160.36h-.1a.76.76,0,0,1-.64-.84A50.4,50.4,0,0,1,66,153.57a.73.73,0,0,1,.91-.52.75.75,0,0,1,.53.91,47.39,47.39,0,0,0-1.18,5.76A.74.74,0,0,1,65.49,160.36Zm3.12-11.49a.71.71,0,0,1-.28-.06.74.74,0,0,1-.4-1,41,41,0,0,1,2.73-5.42.75.75,0,1,1,1.28.77,41.16,41.16,0,0,0-2.64,5.22A.74.74,0,0,1,68.61,148.87Zm6.12-10.19a.78.78,0,0,1-.47-.17.75.75,0,0,1-.1-1,38.83,38.83,0,0,1,4.23-4.37.74.74,0,0,1,1,.07.73.73,0,0,1-.06,1.05,36.71,36.71,0,0,0-4.07,4.2A.74.74,0,0,1,74.73,138.68Zm8.93-7.85a.74.74,0,0,1-.4-1.37,39.69,39.69,0,0,1,5.36-2.85.75.75,0,0,1,.6,1.37,39.18,39.18,0,0,0-5.17,2.74A.7.7,0,0,1,83.66,130.83Z"/><path class="cls-4" d="M166.59,279.63a1,1,0,0,1-.23,0,.76.76,0,0,1-.48-.94s.7-2.1,1.72-5.71a.76.76,0,0,1,.93-.51.75.75,0,0,1,.51.92c-1,3.64-1.73,5.74-1.74,5.76A.74.74,0,0,1,166.59,279.63Zm3.31-11.5-.19,0a.76.76,0,0,1-.54-.92c.5-1.9,1-3.84,1.46-5.77a.75.75,0,1,1,1.45.35c-.47,1.94-1,3.89-1.46,5.8A.74.74,0,0,1,169.9,268.13Zm2.79-11.61-.16,0a.76.76,0,0,1-.57-.89c.43-1.93.84-3.89,1.23-5.83a.75.75,0,0,1,.88-.58.74.74,0,0,1,.58.87c-.39,2-.8,3.93-1.23,5.86A.75.75,0,0,1,172.69,256.52ZM175,244.81l-.13,0a.75.75,0,0,1-.61-.86c.36-2,.69-3.94,1-5.88a.74.74,0,0,1,1.47.24c-.31,1.94-.64,3.93-1,5.9A.75.75,0,0,1,175,244.81Zm1.87-11.8h-.1a.74.74,0,0,1-.64-.84c.27-2,.52-4,.74-5.9a.74.74,0,1,1,1.48.16c-.22,2-.47,4-.74,6A.74.74,0,0,1,176.91,233Zm1.33-11.87h-.06a.75.75,0,0,1-.68-.81c.18-2,.32-4,.44-5.93a.75.75,0,0,1,1.49.09c-.12,1.95-.27,4-.44,6A.75.75,0,0,1,178.24,221.14Zm.72-11.91h0a.74.74,0,0,1-.72-.77c.06-2,.09-4,.09-5.86v-.08a.75.75,0,0,1,.75-.75.74.74,0,0,1,.74.75v.08c0,1.93,0,3.92-.09,5.91A.75.75,0,0,1,179,209.23Zm0-11.94a.75.75,0,0,1-.75-.72c-.07-2-.18-4-.32-5.93a.75.75,0,1,1,1.49-.11c.14,1.95.25,4,.33,6a.75.75,0,0,1-.72.77Zm-.9-11.9a.74.74,0,0,1-.74-.66c-.24-2-.52-4-.85-5.87a.75.75,0,0,1,1.47-.25c.33,1.93.62,3.93.86,5.95a.75.75,0,0,1-.65.83Zm-2-11.76a.76.76,0,0,1-.73-.58c-.44-2-.94-3.89-1.48-5.73a.75.75,0,1,1,1.43-.42c.55,1.87,1.06,3.83,1.51,5.82a.74.74,0,0,1-.56.89Zm-3.38-11.44a.74.74,0,0,1-.7-.48c-.7-1.88-1.47-3.71-2.28-5.45a.73.73,0,0,1,.36-1,.74.74,0,0,1,1,.36c.83,1.77,1.61,3.64,2.33,5.56a.75.75,0,0,1-.44,1A.78.78,0,0,1,172.66,162.19Zm-5.07-10.78a.75.75,0,0,1-.65-.37c-1-1.72-2.08-3.38-3.21-4.94a.75.75,0,0,1,.17-1,.74.74,0,0,1,1,.17,59.39,59.39,0,0,1,3.29,5.06.74.74,0,0,1-.64,1.12Zm-7-9.63a.73.73,0,0,1-.56-.25,54.15,54.15,0,0,0-4.17-4.13.74.74,0,0,1-.07-1.05.73.73,0,0,1,1.05-.06,53.74,53.74,0,0,1,4.3,4.24.76.76,0,0,1,0,1.06A.75.75,0,0,1,160.59,141.78Zm-8.92-7.87a.76.76,0,0,1-.43-.14,52.73,52.73,0,0,0-5-3.08.75.75,0,0,1-.3-1,.74.74,0,0,1,1-.3,52.45,52.45,0,0,1,5.14,3.17.75.75,0,0,1-.42,1.36Zm-10.45-5.7a1,1,0,0,1-.29-.05c-1.77-.74-3.64-1.41-5.53-2a.74.74,0,1,1,.43-1.42c1.95.6,3.86,1.28,5.68,2a.74.74,0,0,1-.29,1.43Z"/><path class="cls-2" d="M380.42,434.31S356.47,387.49,368.11,342c.39-1.52,6.31.17,6.78-1.34.6-1.94-4.22-7.09-3.48-9A87.21,87.21,0,0,1,383,310.7s9.49,13.82,14.41,35.38c.37,1.63-5.68,6.15-5.37,7.87s7,.41,7.2,2.1C402.24,377.89,399.64,405.56,380.42,434.31Z"/><path class="cls-4" d="M359.58,379c-1-1.37-6.68,3.55-7.69,2.26s1.7-10.5.69-11.71C332.79,345.88,311.73,335,311.73,335a116.42,116.42,0,0,0,.07,35.28c.28,1.78,8.34,4.76,8.69,6.51.39,1.92-6.2,4.32-5.73,6.2,6.93,27.78,22.06,49.51,37.06,66.5a156.47,156.47,0,0,0,31.89-15.37A134.54,134.54,0,0,0,359.58,379Z"/><path class="cls-1" d="M365.49,433.9a.76.76,0,0,1-.62-.33c-5.3-7.88-10.47-16-15.36-24.15a.75.75,0,0,1,1.28-.77c4.88,8.13,10,16.23,15.32,24.09a.75.75,0,0,1-.62,1.16Z"/><path class="cls-1" d="M343.33,398.08a.74.74,0,0,1-.65-.38c-7.91-13.94-15.28-28.39-21.94-43l-3-6.66a.75.75,0,0,1,.37-1,.74.74,0,0,1,1,.37l3,6.66c6.63,14.54,14,29,21.87,42.85a.74.74,0,0,1-.28,1A.68.68,0,0,1,343.33,398.08Z"/><path class="cls-4" d="M379.06,436.93s-9.47-50,39.52-67.41C418.58,369.52,422.68,413.2,379.06,436.93Z"/><path class="cls-1" d="M387.86,423.9a.69.69,0,0,1-.25,0,.75.75,0,0,1-.46-.95c5.62-16.05,23.1-40.91,23.28-41.16a.76.76,0,0,1,1-.18.74.74,0,0,1,.18,1c-.18.25-17.54,24.94-23.09,40.79A.75.75,0,0,1,387.86,423.9Z"/></svg>
+                </div>
+            </div>
+            <div class="vertical-divider"></div>
+            <div class="form-section" id="login-box">
+                <form id="loginForm" onsubmit="return validateForm(event)">
+                    <div class="mb-3">
+                        <label for="username" class="form-label mb-1"> Mail or Phone<span class="required mx-1">*</span></label>
+                        <input type="text" id="username" class="form-control text-sm-muted user-icon" placeholder="Enter Email or Phone" required />
+                        <div class="invalid-feedback">Please enter valid email or phone number.</div>
+                    </div>
+                    <div class="col-12 position-relative mb-3">
+                        <label>Password <span class="required">*</span></label>
+                        <input type="password" class="form-control pass-icon password-mask" id="password" placeholder="Enter Password" required>
+                        <span class="toggle-password" onclick="togglePassword('password', this)" style="position:absolute; right:15px; top:38px; cursor:pointer;">
+                           <i class="bi bi-eye-slash-fill"></i>
+                        </span>
+                        <div class="invalid-feedback">Please enter correct password.</div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input p-2" id="rememberMe" />
+                            <label class="form-check-label" for="rememberMe" style="font-size: 14px;">
+            <p class="p-0 m-0">Remember Me</p>
+         </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn w-100 text-white">Log In</button>
+                </form>
+
+
+            </div>
+            <!-- <div class="vertical-divider"></div> -->
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+
+        <script>
+            let realPassword = '';
+
+            function maskPassword(input) {
+                const value = input.value;
+                if (input.dataset.visible === "true") {
+                    realPassword = value;
+                } else {
+                    // Update real password and mask with *
+                    const diff = value.length - realPassword.length;
+                    if (diff > 0) {
+                        realPassword += value.slice(-diff);
+                    } else if (diff < 0) {
+                        realPassword = realPassword.slice(0, diff);
+                    }
+                    input.value = '*'.repeat(realPassword.length);
+                }
+            }
+
+            function togglePassword(inputId, toggleIcon) {
+                const input = document.getElementById(inputId);
+                const icon = toggleIcon.querySelector("i");
+
+                if (input.type === "password") {
+                    input.type = "text";
+                    icon.classList.remove("bi-eye-slash-fill");
+                    icon.classList.add("bi-eye-fill");
+                } else {
+                    input.type = "password";
+                    icon.classList.remove("bi-eye-fill");
+                    icon.classList.add("bi-eye-slash-fill");
+                }
+            }
+
+            function login() {
+                window.location.href = 'dashboard-employer.html'
+            }
+
+            const currentPage = window.location.pathname.split("/").pop();
+            const navLinks = document.querySelectorAll(".nav-menu li a");
+
+            navLinks.forEach(link => {
+                const href = link.getAttribute("href").split("/").pop();
+
+                if (currentPage === href || (currentPage === "" && href === "index.html")) {
+                    link.parentElement.classList.add("active");
+                } else {
+                    link.parentElement.classList.remove("active");
+                }
+            });
+        </script>
+        <!-- Footer Section -->
+        <div id="footer">
+            @include('frontend.layouts.footer')
+        </div>
+       <script src="{{ asset('assets/js/pages.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/js/popper.min.js') }}"></script>
+<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/js/rangeslider.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.nice-select.min.js') }}"></script>
+<script src="{{ asset('assets/js/slick.js') }}"></script>
+<script src="{{ asset('assets/js/counterup.min.js') }}"></script>
+<script src="{{ asset('assets/js/custom.js') }}"></script>
+        <script>
+            // Validations
+            function validateForm(event) {
+                event.preventDefault();
+
+                const username = document.getElementById("username");
+                const password = document.getElementById("password");
+                let isValid = true;
+
+                // Remove previous error styles
+                username.classList.remove("is-invalid");
+                password.classList.remove("is-invalid");
+
+                // Check if username is empty
+                if (username.value.trim() === "") {
+                    username.classList.add("is-invalid");
+                    isValid = false;
+                }
+
+                // Check if password is empty
+                if (password.value.trim() === "") {
+                    password.classList.add("is-invalid");
+                    isValid = false;
+                }
+
+                // If both fields are filled, redirect
+                if (isValid) {
+                    window.location.href = "employee/dashboard-employee";
+                }
+
+                return false;
+            }
+
+            // 👇 Reset outline while typing
+            document.getElementById("username").addEventListener("input", function() {
+                this.classList.remove("is-invalid");
+            });
+            document.getElementById("password").addEventListener("input", function() {
+                this.classList.remove("is-invalid");
+            });
+        </script>
+</body>
+
+</html>

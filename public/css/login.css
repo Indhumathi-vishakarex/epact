@@ -1,0 +1,203 @@
+	@supports (font-variation-settings: normal) {
+	:root { font-family: 'Jost', sans-serif; }
+	}
+
+	/*------------------------------------
+		Fonts
+	------------------------------------*/
+	@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Jost', sans-serif !important;
+    }
+
+	form input{
+		background-color: #eefff1;
+	}
+	
+   
+
+    .Lcontainer {
+      display: flex;
+      flex-wrap: wrap;
+	  position: relative;
+	  top: 40px;
+      width: 100%;
+      max-width: 1000px;
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid #0a856217;
+      box-shadow: 0 0px 12px rgba(237, 255, 244, 0.559);
+      overflow: hidden;
+    }
+
+    .form-section {
+      flex: 1;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      animation: fadeSlide 0.5s ease;
+    }
+	#success-page{
+		position: relative;
+		left: 40%;
+	}
+
+    .image-section {
+      flex: 1;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .image-section img {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .form-section h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #333;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input {
+      padding: 12px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .btn {
+      background: #0b8260;
+      color: white;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .toggle-link {
+      font-size: 14px;
+      text-align: center;
+      color: #0b8260;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+	.btn:hover{
+      border: 1px solid #0b8260;
+	}
+
+    #otp-box {
+      display: none;
+      margin-top: 20px;
+      background: #f9f9f9;
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    .otp-inputs {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .otp-inputs input {
+      width: 40px;
+      padding: 10px;
+      text-align: center;
+      font-size: 18px;
+    }
+
+
+	svg{
+		width: 470px;
+	}
+    .success-page {
+      max-width: 400px;
+      padding: 40px;
+      background: #fff;
+      border-radius: 12px;
+      text-align: center;
+      animation: fadeSlide 0.5s ease;
+    }
+
+    .success-page img {
+      width: 80%;
+      margin-bottom: 20px;
+    }
+	  .vertical-divider {
+    width: 1px;
+    background-color: #44ac461e;
+    margin: 20px 0;
+  }
+
+  @media (max-width: 768px) {
+	svg{
+		width: max-content !important; 
+	}
+  }
+
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .input-group i {
+    position: absolute;
+    left: 12px;
+    color: #999;
+    font-size: 16px;
+  }
+
+  .input-group input {
+    width: 100%;
+    padding: 12px 12px 12px 36px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #eefff1;
+  }
+    @media (max-width: 768px) {
+		#signup-box{
+			width: 100%;
+		}
+
+		.image-section{
+			margin-top: 25px;
+		}
+		#success-page
+		{
+			position: relative;
+			left: 0%;
+		}
+      .Lcontainer {
+		height: 650px;
+		position: relative;
+		top: 0;
+		border-radius: 0px;
+		box-shadow: none;
+        flex-direction: column-reverse;
+      }
+    }
+
+    @keyframes fadeSlide {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
