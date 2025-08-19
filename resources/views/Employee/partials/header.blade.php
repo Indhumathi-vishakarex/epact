@@ -64,7 +64,7 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="employeeDropdown">
                                 <li><a class="dropdown-item" href="{{route('profile')}}">Profile</a></li>
-                                <li><a class="dropdown-item" href="../index.html">Logout</a></li>
+                                <li><a class="dropdown-item" href="{{route('home')}}">Logout</a></li>
                             </ul>
                 </div>
             </nav>

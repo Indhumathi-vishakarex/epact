@@ -1,14 +1,16 @@
 <?php
 
 namespace App\Http\Controllers\Employee;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
     public function dashboard(){
-        return view('Employee.dashboard-employee');
+        $employee = Auth::guard('employee')->user(); 
+      
+        return view('Employee.dashboard-employee',compact('employee'));
 
     }
 

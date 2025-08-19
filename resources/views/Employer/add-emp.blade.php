@@ -8,7 +8,7 @@
 
 <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/epact-globe.webp') }}">
 
->
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
@@ -51,7 +51,7 @@
                         <ul class="navbar-nav ms-auto d-flex flex-row gap-3">
                             <!-- Announcements -->
                             <li class="nav-item position-relative">
-                                <a href="./announcement.html" class="nav-link">
+                                <a href="{{route('emp-announcement')}}" class="nav-link">
                                     <i class="bi bi-megaphone fs-5"></i>
                                     <span class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle text-danger badge-small fw-bold">.</span>
                                 </a>
@@ -59,7 +59,7 @@
 
                             <!-- Notifications -->
                             <li class="nav-item position-relative">
-                                <a href="./notification.html" class="nav-link">
+                                <a href="{{route('emp-notification')}}" class="nav-link">
                                     <i class="bi bi-bell fs-5"></i>
                                     <span class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle text-danger badge-small fw-bold">.</span>
                                 </a>
@@ -227,6 +227,9 @@
     <script src="assets/js/counterup.min.js"></script>
     <script src="assets/js/custom.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
     <script>
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebarNav');

@@ -121,7 +121,7 @@
  
 
 
-    {{-- <div class="modal-overlay" id="documentModal">
+     {{-- <div class="modal-overlay" id="documentModal">
             <div class="modal-content">
                 <h2>Upload Required Documents</h2>
                 <p class="subtext">To continue using the dashboard, please upload the necessary documents below.</p>
@@ -149,7 +149,7 @@
                 </form>
 
             </div>
-        </div> --}}
+        </div>  --}}
 
    @include('Employee.partials.sidebar')
         <main class="col-md-9 ms-sm-auto col-lg-10 mb-5">

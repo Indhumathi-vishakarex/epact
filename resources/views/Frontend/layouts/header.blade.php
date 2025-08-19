@@ -69,10 +69,10 @@
 
                     <ul class="nav-menu nav-menu-social align-to-right">
                         <li class="bg-darker-btn " style=" border-radius: 3px; background-color: #333 !important;">
-                            <a href="./login.html" style="color: #fff !important;"><i class="bi bi-person-circle me-2" style="color: #fff !important;"></i>Employer Login</a>
+                            <a href="{{url('login')}}" style="color: #fff !important;"><i class="bi bi-person-circle me-2" style="color: #fff !important;"></i>Employer Login</a>
                         </li>
                         <li class="list-buttons ms-2">
-                            <a href="./employee-login.html"><i class="bi bi-person-circle me-2"></i>Employee Login</a>
+                            <a href="{{url('employee-login')}}"><i class="bi bi-person-circle me-2"></i>Employee Login</a>
                         </li>
                     </ul>
                 </div>

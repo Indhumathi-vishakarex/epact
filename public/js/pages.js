@@ -87,11 +87,13 @@ fetch("../components/breadcrumbs.html")
   });
 
   // Load footer
-  fetch("footer")
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById("footer").innerHTML = data;
-    });
+  fetch("footer.html")
+  .then(res => res.text())
+  .then(data => {
+    const footer = document.getElementById("footer");
+    footer.innerHTML = data;
+    footer.style.visibility = "visible"; // show after loaded
+  });
 // Login page Dom Section for animation
    function toggle() {
     const container = document.getElementById("Lcontainer");

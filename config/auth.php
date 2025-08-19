@@ -35,12 +35,20 @@ return [
     |
     */
 
-    'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
+'guards' => [
+    'web' => [
+        'driver' => 'session',
+        'provider' => 'users',
     ],
+
+    'employee' => [
+        'driver' => 'session',
+        'provider' => 'employees',
+    ],
+],
+
+
+
 
     /*
     |--------------------------------------------------------------------------
@@ -59,18 +67,20 @@ return [
     |
     */
 
-    'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
-        ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+
+ 'providers' => [
+    'users' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\User::class,
     ],
 
+    'employees' => [
+        'driver' => 'eloquent',
+      
+        'model' => App\Models\Employee\Register::class,
+    ],
+],
     /*
     |--------------------------------------------------------------------------
     | Resetting Passwords

@@ -46,13 +46,13 @@
                         <ul class="navbar-nav ms-auto d-flex flex-row gap-3">
                             <!-- Announcements -->
                             <li class="nav-item position-relative">
-                                <a href="./announcement.html" class="nav-link">
+                                <a href="{{route('emp-announcement')}}" class="nav-link">
                                     <i class="bi bi-megaphone fs-5"></i>
                                     <span class="rounded-pill bg-danger position-absolute top-0 start-100 translate-middle text-danger badge-small fw-bold">.</span>
                                 </a>
                             </li>
                             <li class="nav-item position-relative">
-                                <a href="./notification.html" class="nav-link">
+                                <a href="{{route('emp-notification')}}" class="nav-link">
                                     <i class="bi bi-bell fs-5"></i>
                                     <span class="rounded-pill bg-danger position-absolute top-0 start-100 translate-middle text-danger badge-small fw-bold">.</span>
                                 </a>
@@ -60,6 +60,10 @@
                         </ul>
                     </nav>
                     <hr>
+
+                    {{-- nav bar  of notification and announcement --}}
+
+
                     <div class="profile-area" style="display: flex; justify-content: space-between !important; align-items: center; width: 100%; padding: 20px; background: #fff; border-radius: 10px;">
 
                         <!-- Left Side Text -->
@@ -247,8 +251,7 @@
     </div> --}}
      @include('Frontend.layouts.footer')
     <!-- jQuery for section toggling -->
-   
-<script src="{{ asset('js/pages.js') }}"></script>
+   <script src="{{ asset('js/pages.js') }}"></script>
 <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/js/popper.min.js') }}"></script>
 <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
@@ -257,9 +260,10 @@
 <script src="{{ asset('assets/js/slick.js') }}"></script>
 <script src="{{ asset('assets/js/counterup.min.js') }}"></script>
 <script src="{{ asset('assets/js/custom.js') }}"></script>
-
-<!-- jQuery from CDN (load only once, and preferably before scripts that need jQuery) -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Charts Script -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
         function toggleEditMode() {

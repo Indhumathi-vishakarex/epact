@@ -94,7 +94,7 @@
                         </ul>
                         <ul class="nav-menu nav-menu-social align-to-right">
                             <li class="bg-darker-btn " style=" border-radius: 3px; background-color: #333 !important;">
-                                <a href="./login.html" style="color: #fff !important;"><i class="bi bi-person-circle me-2" style="color: #fff !important;"></i>Employer Login</a>
+                                <a href="{{url('login')}}" style="color: #fff !important;"><i class="bi bi-person-circle me-2" style="color: #fff !important;"></i>Employer Login</a>
                             </li>
                             <li class="list-buttons ms-2">
                                 <a href="{{ url('employee-login')}}"><i class="bi bi-person-circle me-2"></i>Employee Login</a>
@@ -754,7 +754,7 @@
                         </nav>
                         <!-- Title and Description -->
                         <div class="bannerTxt">
-                            <h1 id="page-title" class="text-light fw-bold mb-3">Employer Login</h1>
+                            <h1 id="page-title" class="text-light fw-bold mb-3">Employee Login</h1>
                             <p id="page-desc" class="text-light"></p>
                         </div>
                     </div>
@@ -803,7 +803,8 @@
             </div>
             <div class="vertical-divider"></div>
             <div class="form-section" id="login-box">
-                <form id="loginForm" onsubmit="return validateForm(event)">
+              <form id="loginForm" method="POST" action="{{ url('employee/employees-login') }}">
+    @csrf
                     <div class="mb-3">
                         <label for="username" class="form-label mb-1"> Mail or Phone<span class="required mx-1">*</span></label>
                         <input type="text" id="username" class="form-control text-sm-muted user-icon" name="company_email" placeholder="Enter Email or Phone" required />
@@ -811,7 +812,7 @@
                     </div>
                     <div class="col-12 position-relative mb-3">
                         <label>Password <span class="required">*</span></label>
-                        <input type="password" class="form-control pass-icon password-mask" id="password" name="" placeholder="Enter Password" required>
+                        <input type="password" class="form-control pass-icon password-mask" id="password" name="password" placeholder="Enter Password" required>
                         <span class="toggle-password" onclick="togglePassword('password', this)" style="position:absolute; right:15px; top:38px; cursor:pointer;">
                            <i class="bi bi-eye-slash-fill"></i>
                         </span>
@@ -839,57 +840,6 @@
 
 
 
-        <script>
-            let realPassword = '';
-
-            function maskPassword(input) {
-                const value = input.value;
-                if (input.dataset.visible === "true") {
-                    realPassword = value;
-                } else {
-                    // Update real password and mask with *
-                    const diff = value.length - realPassword.length;
-                    if (diff > 0) {
-                        realPassword += value.slice(-diff);
-                    } else if (diff < 0) {
-                        realPassword = realPassword.slice(0, diff);
-                    }
-                    input.value = '*'.repeat(realPassword.length);
-                }
-            }
-
-            function togglePassword(inputId, toggleIcon) {
-                const input = document.getElementById(inputId);
-                const icon = toggleIcon.querySelector("i");
-
-                if (input.type === "password") {
-                    input.type = "text";
-                    icon.classList.remove("bi-eye-slash-fill");
-                    icon.classList.add("bi-eye-fill");
-                } else {
-                    input.type = "password";
-                    icon.classList.remove("bi-eye-fill");
-                    icon.classList.add("bi-eye-slash-fill");
-                }
-            }
-
-            function login() {
-                window.location.href = 'dashboard-employer.html'
-            }
-
-            const currentPage = window.location.pathname.split("/").pop();
-            const navLinks = document.querySelectorAll(".nav-menu li a");
-
-            navLinks.forEach(link => {
-                const href = link.getAttribute("href").split("/").pop();
-
-                if (currentPage === href || (currentPage === "" && href === "index.html")) {
-                    link.parentElement.classList.add("active");
-                } else {
-                    link.parentElement.classList.remove("active");
-                }
-            });
-        </script>
         <!-- Footer Section -->
         <div id="footer">
             @include('frontend.layouts.footer');
@@ -903,47 +853,8 @@
 <script src="{{ asset('assets/js/slick.js') }}"></script>
 <script src="{{ asset('assets/js/counterup.min.js') }}"></script>
 <script src="{{ asset('assets/js/custom.js') }}"></script>
-        <script>
-            // Validations
-            function validateForm(event) {
-                event.preventDefault();
+        
 
-                const username = document.getElementById("username");
-                const password = document.getElementById("password");
-                let isValid = true;
-
-                // Remove previous error styles
-                username.classList.remove("is-invalid");
-                password.classList.remove("is-invalid");
-
-                // Check if username is empty
-                if (username.value.trim() === "") {
-                    username.classList.add("is-invalid");
-                    isValid = false;
-                }
-
-                // Check if password is empty
-                if (password.value.trim() === "") {
-                    password.classList.add("is-invalid");
-                    isValid = false;
-                }
-
-                // If both fields are filled, redirect
-                if (isValid) {
-                    window.location.href = "employee/dashboard-employee";
-                }
-
-                return false;
-            }
-
-            // 👇 Reset outline while typing
-            document.getElementById("username").addEventListener("input", function() {
-                this.classList.remove("is-invalid");
-            });
-            document.getElementById("password").addEventListener("input", function() {
-                this.classList.remove("is-invalid");
-            });
-        </script>
 </body>
 
 </html>

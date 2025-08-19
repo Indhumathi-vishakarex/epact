@@ -11,17 +11,19 @@
                         <a class="nav-link dropdown-toggle" data-bs-toggle="collapse" href="#accountMenu" role="button" aria-expanded="false" aria-controls="accountMenu" onclick="toggleCollapse('accountMenu')">
                             <i class="bi bi-person-circle me-2"></i> My Account
                         </a>
-                        <div class="collapse" id="accountMenu">
-             <a href="{{ route('account') }}" class="nav-link ms-3" data-target="my-profile">
+             
+<div class="collapse" id="accountMenu">
+<a href="{{route('account')}}" class="nav-link ms-3 module-link" data-target="my-profile">
     <i class="bi bi-person-lines-fill me-2"></i> My Profile
 </a>
-
-<a href="{{ route('account') }}#change-password" class="nav-link ms-3" data-target="change-password">
+<a href="{{route('account')}}#change-password" class="nav-link ms-3 module-link" data-target="change-password">
     <i class="bi bi-lock-fill me-2"></i> Settings
 </a>
 
+</div>
 
-                        </div>
+
+                     
                     </div>
 
                     <div class="dropdown">
@@ -41,22 +43,22 @@
                         </div>
                     </div>
 
-                    <a class="nav-link" href="./doc-verify.html" data-target="document-verification">
+                    <a class="nav-link" href="{{route('doc-verify')}}" data-target="document-verification">
                         <i class="bi bi-file-earmark-check-fill me-2"></i> Document Verification
                     </a>
-                    <a class="nav-link" href="./leave-app.html" data-target="leave-requests">
+                    <a class="nav-link" href="{{route('leave-app')}}" data-target="leave-requests">
                         <i class="bi bi-calendar-check-fill me-2"></i> Leave Applications
                     </a>
-                    <a class="nav-link" href="./attendance.html" data-target="attendance">
+                    <a class="nav-link" href="{{route('emp-attendance')}}" data-target="attendance">
                         <i class="bi bi-clock-history me-2"></i> Attendance
                     </a>
-                    <a class="nav-link" href="./announcement.html" data-target="announcements">
+                    <a class="nav-link" href="{{route('emp-announcement')}}" data-target="announcements">
                         <i class="bi bi-megaphone-fill me-2"></i> Announcements
                     </a>
-                    <a class="nav-link" href="./notification.html" data-target="notifications">
+                    <a class="nav-link" href="{{route('emp-notification')}}" data-target="notifications">
                         <i class="bi bi-bell-fill me-2"></i> Notifications
                     </a>
-                    <a href="./support.html" class="nav-link">
+                    <a href="{{route('emp-chat')}}" class="nav-link">
                         <i class="bi bi-headset me-2"></i> Support / Contact HR
                     </a>
                 </div>
