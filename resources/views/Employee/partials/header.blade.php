@@ -52,20 +52,48 @@
                         <li><a href="faq.html">FAQ</a></li>
                         <li><a href="contact.html">Contact Us</a></li>
                     </ul>
-                    <ul class="align-to-right mob-view-profile">
-                        <!-- Logged-in Employee Details with Logout Dropdown -->
-                        <li class="nav-item dropdown ms-3 d-flex align-items-center">
-                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="employeeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="text-decoration: none; margin-top: 4px;">
-                                <img src="../assets/img/author-2.png" alt="Profile" style="object-fit: contain; width: 36px; height: 36px; border-radius: 50%; margin-right: 10px;">
-                                <div class="d-flex flex-column text-start">
-                                    <span style="font-weight: 500; font-size: 14px;">Kishore Anand</span>
-                                    <small style="font-size: 12px; color: #888;">Software Engineer</small>
-                                </div>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="employeeDropdown">
-                                <li><a class="dropdown-item" href="{{route('profile')}}">Profile</a></li>
-                                <li><a class="dropdown-item" href="{{route('home')}}">Logout</a></li>
-                            </ul>
+              <ul class="align-to-right mob-view-profile">
+    <!-- Logged-in Employee Details with Logout Dropdown -->
+    <li class="nav-item dropdown ms-3 d-flex align-items-center">
+        <a class="nav-link dropdown-toggle d-flex align-items-center" 
+           href="#" 
+           id="employeeDropdown" 
+           role="button" 
+           data-bs-toggle="dropdown" 
+           aria-expanded="false" 
+           style="text-decoration: none; margin-top: 4px;">
+           
+            <!-- Profile Image -->
+            <img src="{{ asset(Auth::guard('employee')->user()->profile ?? 'assets/img/default.png') }}" 
+                 alt="Profile" 
+                 style="object-fit: contain; width: 36px; height: 36px; border-radius: 50%; margin-right: 10px;">
+            
+            <!-- Full Name & Designation -->
+            <div class="d-flex flex-column text-start">
+                <span style="font-weight: 500; font-size: 14px;">
+                    {{ Auth::guard('employee')->user()->first_name ?? '' }}
+                    {{ Auth::guard('employee')->user()->last_name ?? '' }}
+                </span>
+                <small style="font-size: 12px; color: #888;">
+                    {{ Auth::guard('employee')->user()->designation ?? 'N/A' }}
+                </small>
+            </div>
+        </a>
+
+        <!-- Dropdown -->
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="employeeDropdown">
+            <li><a class="dropdown-item" href="{{ route('profile') }}">Profile</a></li>
+            <li>
+                <form action="{{ route('employee.logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="dropdown-item">Logout</button>
+                </form>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+
                 </div>
             </nav>
         </div>

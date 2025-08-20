@@ -54,34 +54,51 @@
                             <div class="card mb-4 shadow-sm col-md-6 px-0">
                                 <div class="card-header fw-bold bg-green2 text-white">Apply Leave Request</div>
                                 <div class="card-body">
-                                    <form id="leaveForm">
+                                    @if(session('success'))
+    <div class="alert alert-success">{{ session('success') }}</div>
+@endif
+
+@if($errors->any())
+    <div class="alert alert-danger">
+        <ul class="mb-0">
+            @foreach($errors->all() as $err)
+                <li>{{ $err }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+                                  <form action="{{ route('leave-application.store') }}" method="POST" enctype="multipart/form-data">
+    @csrf
+    
+    <input type="hidden" name="employee_id" value="{{ auth()->guard('employee')->user()->employee_id }}">
+
                                         <div class="row g-3">
                                             <div class="col-md-6">
                                                 <label for="leaveType" class="form-label">Leave Type <span class="text-danger">*</span></label>
-                                                <select class="form-select" id="leaveType" required>
-                                       <option value="">Choose...</option>
-                                       <option value="Sick Leave">Sick Leave</option>
-                                       <option value="Casual Leave">Casual Leave</option>
-                                       <option value="Earned Leave">Earned Leave</option>
-                                       <option value="Earned Leave">Emergency Leave</option>
-                                       <option value="Maternity/Paternity Leave">Maternity/Paternity Leave</option>
-                                    </select>
+                                               <select class="form-select" name="type" required>
+    <option value="">Choose...</option>
+    <option value="sick">Sick Leave</option>
+    <option value="casual">Casual Leave</option>
+    <option value="permission">Permission</option>
+</select>
+
                                             </div>
                                             <div class="col-md-3">
                                                 <label for="startDate" class="form-label">Start Date <span class="text-danger">*</span></label>
-                                                <input type="date" class="form-control" id="startDate" required>
+                                                <input type="date" class="form-control" id="startDate" name="from_date" required>
                                             </div>
                                             <div class="col-md-3">
                                                 <label for="endDate" class="form-label">End Date</label>
-                                                <input type="date" class="form-control" id="endDate" required>
+                                                <input type="date" class="form-control" id="endDate"  name="to_date" required>
                                             </div>
                                             <div class="col-md-12">
                                                 <label for="reason" class="form-label">Reason <span class="text-danger">*</span></label>
-                                                <textarea class="form-control" id="reason" rows="3" placeholder="Brief explanation..." required></textarea>
+                                                <textarea class="form-control" id="reason" rows="3" name="description" placeholder="Brief explanation..." required></textarea>
                                             </div>
                                             <div class="col-md-12">
-                                                <label for="docFile" class="form-label">Proof</label>
-                                                <input type="file" class="form-control" id="docFile" required />
+                                                <label for="docFile" class="form-label"> Proof</label>
+                                                <input type="file" class="form-control"  name="docFile" id="docFile" required />
                                             </div>
                                         </div>
                                         <div class="mt-3">
@@ -91,7 +108,40 @@
                                 </div>
                             </div>
                             <!-- Leave Balances -->
-                            <div class="card mb-4 shadow-sm col-md-6 leave-balance px-0">
+                            {{-- <div class="card mb-4 shadow-sm col-md-6 leave-balance px-0">
+                                <div class="card-header fw-bold bg-second text-dark">Leave requests pending</div>
+                                <div class="card-body p-0">
+                                    <table class="table table-striped mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Total Allowed</th>
+                                                <th class="text-center">{{ $totalAllowed }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>leave approved</td>
+                                                <td class="text-center">{{ $leaveTaken }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Casual Leave</td>
+                                                <td class="text-center">3</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Earned Leave</td>
+                                                <td class="text-center">7</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Maternity/Paternity Leave</td>
+                                                <td class="text-center">30</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div> --}}
+
+
+                              <div class="card mb-4 shadow-sm col-md-6 leave-balance px-0">
                                 <div class="card-header fw-bold bg-second text-dark">Leave requests pending</div>
                                 <div class="card-body p-0">
                                     <table class="table table-striped mb-0">
@@ -134,6 +184,7 @@
                                     <table class="table table-responsive table-hover mb-0">
                                         <thead>
                                             <tr>
+                                             
                                                 <th>No.</th>
                                                 <th>E-ID</th>
                                                 <th>Employee Name</th>
@@ -145,19 +196,47 @@
                                             </tr>
                                         </thead>
                                         <tbody id="leaveTableBody">
+                                              @forelse($leaves as $key => $leave)
                                             <tr>
-                                                <td>1</td>
-                                                <td>EMP001</td>
-                                                <td>Kishore Anand</td>
-                                                <td>Casual Leave</td>
-                                                <td>07/12/2025 - 22/12/2025</td>
-                                                <td>Medical Checkup</td>
-                                                <td><span class="badge bg-warning">Pending</span></td>
+                                                  <td>{{ $key+1 }}</td>
+            <td>{{ $leave->employee_id }}</td>
+            <td>{{ auth()->guard('employee')->user()->first_name }} {{ auth()->guard('employee')->user()->last_name }}</td>
+                                               <td>
+                @if($leave->type == 'sick') Sick Leave
+                @elseif($leave->type == 'casual') Casual Leave
+                @elseif($leave->type == 'permission') Permission
+                @else {{ ucfirst($leave->type) }}
+                @endif
+            </td>
+                                                 <td>{{ \Carbon\Carbon::parse($leave->from_date)->format('d/m/Y') }} - {{ \Carbon\Carbon::parse($leave->to_date)->format('d/m/Y') }}</td>
+                                                    <td>{{ $leave->description }}</td>
+                                                  <td>
+                <span class="badge 
+                    @if($leave->status == 'pending') bg-warning 
+                    @elseif($leave->status == 'approved') bg-success 
+                    @else bg-danger @endif">
+                    {{ ucfirst($leave->status) }}
+                </span>
+            </td>
                                                 <td>
-                                                    <button class="btn btn-sm btn-outline-success view-btn" data-bs-toggle="modal" data-bs-target="#leaveModal" data-id="EMP001" data-name="Kishore Anand" data-leave="Casual Leave" data-date="07/12/2025 - 22/12/2025" data-reason="classmodal-dialog modal-dialog-centered modal-lg modal-contentmodal-header bg-green text-white class=modal-title text-white">View</button>
-                                                    <button class="btn btn-sm btn-outline-danger remove-btn"><i class="bi bi-trash"></i></button>
-                                                </td>
+                <button class="btn btn-sm btn-outline-success view-btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#leaveModal"
+                    data-id="{{ $leave->employee_id }}"
+                    data-name="{{ auth()->guard('employee')->user()->first_name }} {{ auth()->guard('employee')->user()->last_name }}"
+                    data-leave="{{ $leave->type }}"
+                    data-date="{{ \Carbon\Carbon::parse($leave->from_date)->format('d/m/Y') }} - {{ \Carbon\Carbon::parse($leave->to_date)->format('d/m/Y') }}"
+                    data-reason="{{ $leave->description }}"
+                    data-status="{{ ucfirst($leave->status) }}">
+                    View
+                </button>
+            </td>
                                             </tr>
+                                              @empty
+        <tr>
+            <td colspan="8" class="text-center text-muted">No leave applications yet</td>
+        </tr>
+    @endforelse
                                             <script>
                                                 document.querySelectorAll('.remove-btn').forEach(button => {
                                                     button.addEventListener('click', function() {

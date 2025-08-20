@@ -69,7 +69,76 @@ public function employeeslogin(Request $request)
     //     'token' => $plainTextToken,
        
     //   ]);
+
+
+
+
+    public function profile()
+{
+    $employee = Auth::guard('employee')->user();
+
+    if (!$employee) {
+        return redirect()->route('employee.login')->withErrors('Unauthorized access.');
+    }
+
+    return view('Employee.profile', compact('employee'));
 }
+
+
+public function employeelogout(Request $request)
+{
+    Auth::guard('employee')->logout();
+
+    // invalidate session
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+
+    // redirect to home page instead of login
+    return redirect()->route('employee-login')->with('success', 'Successfully logged out');
+}
+
+
+
+
+public function empprofileupdate(Request $request, $id)
+{
+    $employee = Register::findOrFail($id);
+
+    $uploadDocument = function ($field) use ($request) {
+        if ($request->hasFile($field)) {
+            $fileName = time() . '_' . uniqid() . '.' . $request->file($field)->getClientOriginalExtension();
+            $request->file($field)->move(public_path('profile'), $fileName);
+            return 'profile/' . $fileName;
+        }
+        return null;
+    };
+
+    // Update each document
+    $fields = ['profile', 'signature_uload', 'driving_license', 'passport', 'nda', 'offer', 'aadhar', 'experience'];
+
+    foreach ($fields as $field) {
+        $uploaded = $uploadDocument($field);
+        if ($uploaded) {
+            $employee->$field = $uploaded;
+        }
+    }
+
+    $employee->save();
+
+    return redirect()->back()->with('success', 'Documents uploaded successfully!');
+}
+
+
+
+
+
+
+
+}
+
+
+
+
 
 
 

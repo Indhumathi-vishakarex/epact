@@ -63,11 +63,11 @@
                         <!-- Right Side Profile -->
                         <div class="profile-image" style="display: flex; align-items: center; gap: 15px;">
                             <div class="d-flex flex-column text-start" style="gap: 15px;">
-                                <h4 style="margin: 0;">William Turner</h4>
-                                <p style="margin: 0; font-size: 14px; color: #6c757d;">Web Developer</p>
+                                 <h4 class="mb-0">{{ $employee->first_name }} {{ $employee->last_name }}</h4>
+                                <p style="margin: 0; font-size: 14px; color: #6c757d;">{{ $employee->designation ?? 'Employee' }}</p>
                             </div>
                             <div style="position: relative;">
-                                <img src="../assets/img/author-2.png" style="background: #81b19085; border-radius: 100px; width: 100px; height: 100px; object-fit: contain;" alt="">
+                                <img src="{{ $employee->profile ? asset($employee->profile) : asset('assets/img/default.png') }}" style="background: #81b19085; border-radius: 100px; width: 100px; height: 100px; object-fit: contain;" alt="">
                                 <button style="position: absolute; bottom: 0; right: 0; background: #12a940; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; font-size: 16px; cursor: pointer;" onclick="document.getElementById('uploadProfilePic').click()">✎</button>
                                 <input type="file" id="uploadProfilePic" style="display: none;" accept="image/*">
                             </div>
@@ -82,11 +82,11 @@
                         <div class="row p-4 g-3 edit-area">
                             <div class="col-md-6">
                                 <label class="form-label prolabel">First Name</label><span class="required text-danger mx-1">*</span>
-                                <input type="text" class="form-control text-sm-muted" value="William" required disabled>
+                                <input type="text" class="form-control text-sm-muted" value="{{ $employee->first_name }}" required disabled>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label prolabel">Last Name</label><span class="required text-danger mx-1">*</span>
-                                <input type="text" class="form-control text-sm-muted" value="Turner" required disabled>
+                                <input type="text" class="form-control text-sm-muted" value="{{ $employee->last_name }}" required disabled>
                             </div>
                             <div class="col-6">
                                 <label class="form-label prolabel">Company Name</label><span class="required text-danger mx-1">*</span>
@@ -94,11 +94,11 @@
                             </div>
                             <div class="col-6">
                                 <label class="form-label prolabel">Email</label><span class="required text-danger mx-1">*</span>
-                                <input id="email" type="text" placeholder="Email" class="form-control text-sm-muted" value="william.turner@epact.com" required disabled>
+                                <input id="email" type="text" placeholder="Email" class="form-control text-sm-muted" value="{{ $employee->company_email }}" required disabled>
                             </div>
                             <div class="col-6">
                                 <label class="form-label prolabel">Phone</label><span class="required text-danger mx-1">*</span>
-                                <input id="phone" type="tel" placeholder="phone" class="form-control text-sm-muted" placeholder="phone" value="+44 020 3376 5250" required disabled>
+                                <input id="phone" type="tel" placeholder="phone" class="form-control text-sm-muted" placeholder="phone" value="{{ $employee->phone_number?? 'N/A' }}" required disabled>
                             </div>
                         </div>
 
@@ -107,7 +107,7 @@
                             <div class="row g-3">
                                 <div class="col-6">
                                     <label class="form-label prolabel">Address Line 1</label><span class="required text-danger mx-1">*</span>
-                                    <input type="text" class="form-control text-sm-muted" value="221B Baker Street" required disabled>
+                                    <input type="text" class="form-control text-sm-muted" value="{{ $employee->address ?? '' }}" required disabled>
                                 </div>
                                 <div class="col-6">
                                     <label class="form-label prolabel">Address Line 2</label><span class="required text-danger mx-1">*</span>
@@ -115,11 +115,11 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label prolabel">City</label><span class="required text-danger mx-1">*</span>
-                                    <input type="text" class="form-control text-sm-muted" value="London" required disabled>
+                                    <input type="text" class="form-control text-sm-muted" value="{{ $employee->city?? '' }}" required disabled>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label prolabel">Postal Code</label><span class="required text-danger mx-1">*</span>
-                                    <input type="text" class="form-control text-sm-muted" value="NW1 6XE" required disabled>
+                                    <input type="text" class="form-control text-sm-muted" value="{{ $employee->post_code ?? '' }}" required disabled>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label prolabel">Country</label><span class="required text-danger mx-1">*</span>

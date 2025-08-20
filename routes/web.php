@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\Employee\AttendanceController;
 use App\Http\Controllers\Employee\EmployeeController;
 use App\Http\Controllers\Employee\EmployeeLoginController;
+use App\Http\Controllers\Employee\LeaveManagementController;
 use App\Http\Controllers\Employer\EmployerController;
 use App\Http\Controllers\Employer\LoginController;
 use App\Http\Controllers\Frontend\FrontendController;
-
+use App\Models\Employee\LeaveManagement;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -66,21 +68,41 @@ Route::middleware('auth.employee')->group(function () {
 
 
 
-Route::get('/employee-login', [EmployeeLoginController::class, 'employeelogin']);
+Route::get('/employee-login', [EmployeeLoginController::class, 'employeelogin'])
+    ->name('employee-login');
 Route::group(['prefix' => 'employee'], function () {
     Route::post('/employees-login',[EmployeeLoginController::class, 'employeeslogin'])->name('employees-login');
-
+ Route::post('/check-in', [AttendanceController::class, 'checkIn']);
+    Route::post('/check-out', [AttendanceController::class, 'checkOut']);
     // Employee routes
     // Route::get('/dashboard-employee', [EmployeeController::class, 'dashboard'])->name('dashboard-employee');
-    Route::get('/profile', [EmployeeController::class, 'profile'])->name('profile');
+    // Route::get('/profile', [EmployeeController::class, 'profile'])->name('profile');
     Route::get('/settings', [EmployeeController::class, 'settings'])->name('settings');
     Route::get('/attendance', [EmployeeController::class, 'attendance'])->name('attendance');
-    Route::get('/leave-application', [EmployeeController::class, 'leaveApplication'])->name('leave-application');
+    Route::get('/leave-application', [LeaveManagementController::class, 'leaveApplication'])->name('leave-application');
     Route::get('/documents', [EmployeeController::class, 'documents'])->name('documents');
     Route::get('/announcement', [EmployeeController::class, 'announcement'])->name('announcement');
     Route::get('/notification', [EmployeeController::class, 'notification'])->name('notification');
     Route::get('/chat', [EmployeeController::class, 'chat'])->name('support');
 });
+
+
+Route::middleware('auth:employee')->group(function () {
+    Route::get('/employee/profile', [EmployeeLoginController::class, 'profile'])->name('profile');
+});
+
+Route::post('/employee-logout', [EmployeeLoginController::class, 'employeelogout'])->name('employee.logout');
+
+Route::post('/Update/{id}', [EmployeeLoginController::class, 'empprofileupdate'])
+    ->name('employee.update');
+
+
+// web.php
+
+    Route::post('/leave-application/store', [LeaveManagementController::class, 'storeWeb'])
+        ->name('leave-application.store');
+
+
 
 
 Route::get('footer',[FrontendController::class,'footer']);
